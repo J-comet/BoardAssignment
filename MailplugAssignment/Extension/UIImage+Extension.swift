@@ -9,6 +9,6 @@ import UIKit
 
 extension UIImage {
     var naviBarItemStyle: UIImage {
-        self.withTintColor(.mpSecondary, renderingMode: .alwaysOriginal).withConfiguration(UIImage.SymbolConfiguration(pointSize: 18))
+        self.withTintColor(.mpSecondaryBlackChocolate700, renderingMode: .alwaysOriginal).withConfiguration(UIImage.SymbolConfiguration(pointSize: 18))
     }
 }

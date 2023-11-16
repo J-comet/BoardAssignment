@@ -14,7 +14,7 @@ final class NavTitleView: UIView {
     
     private let titleLabel = UILabel().then {
         $0.font = .monospacedSystemFont(ofSize: 20, weight: .semibold)
-        $0.textColor = .mpSecondary
+        $0.textColor = .mpSecondaryBlackChocolate700
         $0.textAlignment = .left
     }
     

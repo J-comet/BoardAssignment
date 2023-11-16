@@ -22,9 +22,9 @@ class ViewController<T: BaseView, U: BaseViewModel>: UIViewController {
         return view as! T
     }
     
-    var viewModel: U? = nil
+    var viewModel: U
     
-    init(viewModel: U?) {
+    init(viewModel: U) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
