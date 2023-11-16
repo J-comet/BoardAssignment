@@ -9,7 +9,7 @@ import UIKit
 
 class BaseView: UIView {
 
-    var viewBackgroundColor: UIColor { .white }
+    var viewBackgroundColor: UIColor { .mpBackground }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

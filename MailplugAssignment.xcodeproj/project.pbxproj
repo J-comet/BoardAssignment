@@ -17,6 +17,10 @@
 		C05D280F2B06497400F98E23 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05D280E2B06497400F98E23 /* BaseCollectionViewCell.swift */; };
 		C05D28112B06499100F98E23 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05D28102B06499100F98E23 /* BaseViewModel.swift */; };
 		C05D28132B0649A800F98E23 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05D28122B0649A800F98E23 /* BaseViewController.swift */; };
+		C05D281A2B064AEA00F98E23 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05D28192B064AEA00F98E23 /* HomeView.swift */; };
+		C05D281C2B064AF000F98E23 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05D281B2B064AF000F98E23 /* HomeViewModel.swift */; };
+		C05D281F2B0653C900F98E23 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05D281E2B0653C900F98E23 /* UIImage+Extension.swift */; };
+		C05D28222B06695100F98E23 /* NavTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05D28212B06695100F98E23 /* NavTitleView.swift */; };
 		C0DAE96A2B05F44F0067279A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DAE9692B05F44F0067279A /* AppDelegate.swift */; };
 		C0DAE96C2B05F44F0067279A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DAE96B2B05F44F0067279A /* SceneDelegate.swift */; };
 		C0DAE9732B05F4510067279A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0DAE9722B05F4510067279A /* Assets.xcassets */; };
@@ -31,6 +35,10 @@
 		C05D280E2B06497400F98E23 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		C05D28102B06499100F98E23 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		C05D28122B0649A800F98E23 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		C05D28192B064AEA00F98E23 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		C05D281B2B064AF000F98E23 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		C05D281E2B0653C900F98E23 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		C05D28212B06695100F98E23 /* NavTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavTitleView.swift; sourceTree = "<group>"; };
 		C0DAE9662B05F44F0067279A /* MailplugAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MailplugAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0DAE9692B05F44F0067279A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0DAE96B2B05F44F0067279A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +65,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C05D28142B064A2000F98E23 /* Resourse */ = {
+			isa = PBXGroup;
+			children = (
+				C0DAE9722B05F4510067279A /* Assets.xcassets */,
+			);
+			path = Resourse;
+			sourceTree = "<group>";
+		};
+		C05D28182B064ADC00F98E23 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C0DAE9802B05F5580067279A /* HomeVC.swift */,
+				C05D28192B064AEA00F98E23 /* HomeView.swift */,
+				C05D281B2B064AF000F98E23 /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		C05D281D2B06539400F98E23 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C05D281E2B0653C900F98E23 /* UIImage+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		C05D28202B06693800F98E23 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C05D28212B06695100F98E23 /* NavTitleView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C0DAE95D2B05F44F0067279A = {
 			isa = PBXGroup;
 			children = (
@@ -76,13 +118,15 @@
 		C0DAE9682B05F44F0067279A /* MailplugAssignment */ = {
 			isa = PBXGroup;
 			children = (
-				C0DAE9832B05F5BD0067279A /* Base */,
 				C0DAE9772B05F4510067279A /* Info.plist */,
 				C0DAE9692B05F44F0067279A /* AppDelegate.swift */,
 				C0DAE96B2B05F44F0067279A /* SceneDelegate.swift */,
-				C0DAE9722B05F4510067279A /* Assets.xcassets */,
+				C0DAE9832B05F5BD0067279A /* Base */,
+				C05D281D2B06539400F98E23 /* Extension */,
 				C0DAE9742B05F4510067279A /* LaunchScreen.storyboard */,
+				C05D28142B064A2000F98E23 /* Resourse */,
 				C0DAE9822B05F5AA0067279A /* Scene */,
+				C05D28202B06693800F98E23 /* View */,
 			);
 			path = MailplugAssignment;
 			sourceTree = "<group>";
@@ -90,7 +134,7 @@
 		C0DAE9822B05F5AA0067279A /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				C0DAE9802B05F5580067279A /* HomeVC.swift */,
+				C05D28182B064ADC00F98E23 /* Home */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -192,13 +236,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C05D281A2B064AEA00F98E23 /* HomeView.swift in Sources */,
+				C05D28222B06695100F98E23 /* NavTitleView.swift in Sources */,
 				C0DAE9812B05F5580067279A /* HomeVC.swift in Sources */,
 				C0DAE96A2B05F44F0067279A /* AppDelegate.swift in Sources */,
+				C05D281C2B064AF000F98E23 /* HomeViewModel.swift in Sources */,
 				C0DAE96C2B05F44F0067279A /* SceneDelegate.swift in Sources */,
 				C05D28112B06499100F98E23 /* BaseViewModel.swift in Sources */,
 				C05D280A2B06488800F98E23 /* BaseView.swift in Sources */,
 				C05D28132B0649A800F98E23 /* BaseViewController.swift in Sources */,
 				C05D280D2B06495500F98E23 /* BaseCellProtocol.swift in Sources */,
+				C05D281F2B0653C900F98E23 /* UIImage+Extension.swift in Sources */,
 				C05D280F2B06497400F98E23 /* BaseCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
