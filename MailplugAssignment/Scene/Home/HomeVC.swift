@@ -33,17 +33,6 @@ final class HomeVC: BaseViewController<HomeView, HomeViewModel> {
         super.viewDidLoad()
         bindViewModel()
         configureVC()
-        
-        for family in UIFont.familyNames {
-            print(family)
-            for name in UIFont.fontNames(forFamilyName: family) {
-                print("name = \(name)")
-            }
-        }
-    }
-    
-    @objc func searchButtonClicked() {
-        print("111")
     }
     
 }

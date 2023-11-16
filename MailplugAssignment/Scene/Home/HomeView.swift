@@ -17,7 +17,7 @@ final class HomeView: BaseView {
     }
     
     private let emptyView = EmptyView().then {
-        $0.updateTitle(image: .emptyPost, text: "등록된 게시글이 없습니다.")
+        $0.updateTitle(image: .emptyPost, text: Strings.Home.emptyData)
     }
     
     override func configureHierarchy() {

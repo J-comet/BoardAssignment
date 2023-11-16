@@ -29,6 +29,9 @@
 		C05D282F2B06790900F98E23 /* SpoqaHanSansNeo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C05D282A2B06790900F98E23 /* SpoqaHanSansNeo-Bold.otf */; };
 		C05D28342B067BC600F98E23 /* SansNeoFontLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05D28332B067BC600F98E23 /* SansNeoFontLabel.swift */; };
 		C05D28372B067CD600F98E23 /* SpoqaHanSansNeoFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05D28362B067CD600F98E23 /* SpoqaHanSansNeoFonts.swift */; };
+		C05D283A2B067F4500F98E23 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C05D283C2B067F4500F98E23 /* Localizable.strings */; };
+		C05D283F2B06801000F98E23 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05D283E2B06801000F98E23 /* Strings.swift */; };
+		C05D28412B06803A00F98E23 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05D28402B06803A00F98E23 /* String+Extension.swift */; };
 		C0DAE96A2B05F44F0067279A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DAE9692B05F44F0067279A /* AppDelegate.swift */; };
 		C0DAE96C2B05F44F0067279A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DAE96B2B05F44F0067279A /* SceneDelegate.swift */; };
 		C0DAE9732B05F4510067279A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0DAE9722B05F4510067279A /* Assets.xcassets */; };
@@ -55,6 +58,9 @@
 		C05D282A2B06790900F98E23 /* SpoqaHanSansNeo-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Bold.otf"; sourceTree = "<group>"; };
 		C05D28332B067BC600F98E23 /* SansNeoFontLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SansNeoFontLabel.swift; sourceTree = "<group>"; };
 		C05D28362B067CD600F98E23 /* SpoqaHanSansNeoFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpoqaHanSansNeoFonts.swift; sourceTree = "<group>"; };
+		C05D283D2B067F7E00F98E23 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C05D283E2B06801000F98E23 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		C05D28402B06803A00F98E23 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		C0DAE9662B05F44F0067279A /* MailplugAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MailplugAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0DAE9692B05F44F0067279A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0DAE96B2B05F44F0067279A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,8 +90,10 @@
 		C05D28142B064A2000F98E23 /* Resourse */ = {
 			isa = PBXGroup;
 			children = (
-				C05D28252B0678E200F98E23 /* Font */,
 				C0DAE9722B05F4510067279A /* Assets.xcassets */,
+				C05D28252B0678E200F98E23 /* Font */,
+				C05D283C2B067F4500F98E23 /* Localizable.strings */,
+				C05D283E2B06801000F98E23 /* Strings.swift */,
 			);
 			path = Resourse;
 			sourceTree = "<group>";
@@ -104,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				C05D281E2B0653C900F98E23 /* UIImage+Extension.swift */,
+				C05D28402B06803A00F98E23 /* String+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -236,11 +245,12 @@
 			};
 			buildConfigurationList = C0DAE9612B05F44F0067279A /* Build configuration list for PBXProject "MailplugAssignment" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ko;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				ko,
+				en,
 			);
 			mainGroup = C0DAE95D2B05F44F0067279A;
 			packageReferences = (
@@ -269,6 +279,7 @@
 				C05D282E2B06790900F98E23 /* SpoqaHanSansNeo-Light.otf in Resources */,
 				C05D282D2B06790900F98E23 /* SpoqaHanSansNeo-Thin.otf in Resources */,
 				C05D282C2B06790900F98E23 /* SpoqaHanSansNeo-Medium.otf in Resources */,
+				C05D283A2B067F4500F98E23 /* Localizable.strings in Resources */,
 				C05D282B2B06790900F98E23 /* SpoqaHanSansNeo-Regular.otf in Resources */,
 				C0DAE9732B05F4510067279A /* Assets.xcassets in Resources */,
 			);
@@ -283,11 +294,13 @@
 			files = (
 				C05D281A2B064AEA00F98E23 /* HomeView.swift in Sources */,
 				C05D28372B067CD600F98E23 /* SpoqaHanSansNeoFonts.swift in Sources */,
+				C05D283F2B06801000F98E23 /* Strings.swift in Sources */,
 				C05D28242B06761F00F98E23 /* EmptyView.swift in Sources */,
 				C05D28222B06695100F98E23 /* NavTitleView.swift in Sources */,
 				C0DAE9812B05F5580067279A /* HomeVC.swift in Sources */,
 				C0DAE96A2B05F44F0067279A /* AppDelegate.swift in Sources */,
 				C05D281C2B064AF000F98E23 /* HomeViewModel.swift in Sources */,
+				C05D28412B06803A00F98E23 /* String+Extension.swift in Sources */,
 				C0DAE96C2B05F44F0067279A /* SceneDelegate.swift in Sources */,
 				C05D28112B06499100F98E23 /* BaseViewModel.swift in Sources */,
 				C05D280A2B06488800F98E23 /* BaseView.swift in Sources */,
@@ -302,6 +315,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		C05D283C2B067F4500F98E23 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C05D283D2B067F7E00F98E23 /* ko */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		C0DAE9742B05F4510067279A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -318,6 +339,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -381,6 +403,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -446,6 +469,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -477,6 +501,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

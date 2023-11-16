@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  MailplugAssignment
+
+  Created by 장혜성 on 2023/11/17.
+  
+*/
+
+// 메뉴
+"board" = "게시판";
+"general_board" = "일반 게시판";
+"anonymous_board" = "익명 게시판";
+"notice_board" = "공지 게시판";
+"free_board" = "자유 게시판";
+
+// 홈
+"empty_data" = "등록된 게시글이 없습니다.";
