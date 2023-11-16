@@ -16,14 +16,14 @@ import Then
 final class HomeVC: BaseViewController<HomeView, HomeViewModel> {
     
     private let leftBarButton = UIBarButtonItem(
-        image: .hamburgerMenu.naviBarItemStyle,
+        image: .hamburgerMenu.defaultIconStyle,
         style: .plain,
         target: nil,
         action: nil
     )
     
     private let rightBarButton = UIBarButtonItem(
-        image: .magnifyingGlass.naviBarItemStyle,
+        image: .magnifyingGlass.defaultIconStyle,
         style: .plain,
         target: nil,
         action: nil
@@ -42,7 +42,9 @@ extension HomeVC {
     func bindViewModel() {
         leftBarButton.rx.tap
             .bind(with: self) { owner, _ in
-                print("메뉴 클릭")
+                let vc = MenuVC(viewModel: MenuViewModel())
+                vc.modalPresentationStyle = .pageSheet
+                owner.present(vc, animated: true)
             }
             .disposed(by: viewModel.disposeBag)
         

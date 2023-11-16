@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIImage {
-    var naviBarItemStyle: UIImage {
+    var defaultIconStyle: UIImage {
         self.withTintColor(.mpSecondaryBlackChocolate700, renderingMode: .alwaysOriginal).withConfiguration(UIImage.SymbolConfiguration(pointSize: 18))
     }
 }

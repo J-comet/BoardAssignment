@@ -11,6 +11,7 @@ final class SansNeoFontLabel: UILabel {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        textColor = .mpSecondaryBlackChocolate700
     }
     
     required init?(coder: NSCoder) {
