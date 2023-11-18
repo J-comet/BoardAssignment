@@ -15,6 +15,12 @@ import Then
 
 final class HomeVC: BaseViewController<HomeView, HomeViewModel> {
     
+    private let height = CGFloat(44)
+    
+    private lazy var navView = NavTitleView().then {
+        $0.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.height)
+    }
+    
     private let leftBarButton = UIBarButtonItem(
         image: .hamburgerMenu.defaultIconStyle,
         style: .plain,
@@ -44,6 +50,10 @@ extension HomeVC {
             .bind(with: self) { owner, _ in
                 let vc = MenuVC(viewModel: MenuViewModel())
                 vc.modalPresentationStyle = .pageSheet
+                vc.updateNavTitleHandler = { title in
+                    owner.navView.updateTitle(title: title)
+                    owner.navigationItem.titleView = owner.navView
+                }
                 owner.present(vc, animated: true)
             }
             .disposed(by: viewModel.disposeBag)
@@ -59,12 +69,9 @@ extension HomeVC {
         navigationItem.leftBarButtonItem = leftBarButton
         navigationItem.rightBarButtonItem = rightBarButton
         
-        let height = CGFloat(44)
         navigationController?.navigationBar.frame = CGRect(x: 0, y: 44, width: view.frame.width, height: height)
-        let navView = NavTitleView().then {
-            $0.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: height)
-        }
-        navView.updateTitle(title: "게시판")
+        
+        navView.updateTitle(title: Strings.Menu.generalBoard)
         navigationItem.titleView = navView
     }
 }

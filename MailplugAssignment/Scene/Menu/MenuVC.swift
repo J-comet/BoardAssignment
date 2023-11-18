@@ -12,6 +12,8 @@ import RxCocoa
 
 final class MenuVC: BaseViewController<MenuView, MenuViewModel> {
     
+    var updateNavTitleHandler: ((String) -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
@@ -46,8 +48,8 @@ extension MenuVC {
         Observable.zip(mainView.tableView.rx.itemSelected, mainView.tableView.rx.modelSelected(String.self))
             .map { $0.1 }
             .bind(with: self) { owner, value in
-                // TODO: HomeVC 로 데이터 전달 및 dismiss
-                print(value)
+                owner.updateNavTitleHandler?(value)
+                owner.dismiss(animated: true)
             }
             .disposed(by: viewModel.disposeBag)
         
