@@ -13,11 +13,7 @@ struct Strings {
         static let emptyData = "empty_data".localized
     }
     
-    struct Test {
-        static let board = "board".localized
-        static let generalBoard = "general_board".localized
-        static let anonymousBoard = "anonymous_board".localized
-        static let noticeBoard = "notice_board".localized
-        static let freeBoard = "free_board".localized
+    struct Common {
+        static let board = "common_board".localized
     }
 }

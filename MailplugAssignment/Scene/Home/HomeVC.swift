@@ -48,10 +48,10 @@ extension HomeVC {
     func bindViewModel() {
         leftBarButton.rx.tap
             .bind(with: self) { owner, _ in
-                let vc = MenuVC(viewModel: MenuViewModel())
+                let vc = MenuVC(viewModel: MenuViewModel(boardRepository: BoardRepository()))
                 vc.modalPresentationStyle = .pageSheet
-                vc.updateNavTitleHandler = { title in
-                    owner.navView.updateTitle(title: title)
+                vc.updateNavTitleHandler = { boardEntity in
+                    owner.navView.updateTitle(title: boardEntity.displayName)
                     owner.navigationItem.titleView = owner.navView
                 }
                 owner.present(vc, animated: true)
@@ -71,7 +71,7 @@ extension HomeVC {
         
         navigationController?.navigationBar.frame = CGRect(x: 0, y: 44, width: view.frame.width, height: height)
         
-        navView.updateTitle(title: Strings.Test.generalBoard)
+        navView.updateTitle(title: "1234556")
         navigationItem.titleView = navView
     }
 }

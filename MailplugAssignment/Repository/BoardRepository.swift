@@ -10,8 +10,6 @@ import Foundation
 import RxSwift
 
 final class BoardRepository {
-    static let shared = BoardRepository()
-    private init() {}
     
     func getBoards() -> Single<Result<BoardsEntity, Error>> {
         return Single.create { single in

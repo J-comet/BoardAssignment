@@ -18,7 +18,7 @@ final class MenuView: BaseView {
     
     private let boardLabel = SansNeoFontLabel().then {
         $0.font(weight: .light, size: 14)
-        $0.text = Strings.Test.board
+        $0.text = Strings.Common.board
     }
     
     private let lineView = UIView().then {

@@ -10,14 +10,14 @@ import UIKit
 import SnapKit
 import Then
 
-final class MenuTableCell: BaseTableViewCell<String> {
+final class MenuTableCell: BaseTableViewCell<BoardsEntityValue> {
     
     private let menuLabel = SansNeoFontLabel().then {
         $0.font(weight: .regular, size: 16)
     }
     
-    override func configCell(row: String) {
-        menuLabel.text = row
+    override func configCell(row: BoardsEntityValue) {
+        menuLabel.text = row.displayName
     }
     
     override func configureHierarchy() {

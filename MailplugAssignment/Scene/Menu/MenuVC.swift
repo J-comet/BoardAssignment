@@ -12,36 +12,22 @@ import RxCocoa
 
 final class MenuVC: BaseViewController<MenuView, MenuViewModel> {
     
-    var updateNavTitleHandler: ((String) -> Void)?
-    
-    let disposeBag = DisposeBag()
+    var updateNavTitleHandler: ((BoardsEntityValue) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
         configureVC()
-        
-        requestTest()
     }
-    
-    func requestTest() {
-        
-        BoardRepository.shared.getBoards()
-            .subscribe(with: self) { owner, result in
-                switch result {
-                case .success(let entity):
-                    print(entity)
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-            }
-            .disposed(by: disposeBag)
-    }
+
 }
 
 extension MenuVC {
     
     func bindViewModel() {
+        
+        viewModel.getBoards()
+        
         mainView.closeButton
             .rx
             .tap
@@ -50,7 +36,7 @@ extension MenuVC {
             }
             .disposed(by: viewModel.disposeBag)
         
-        viewModel.menus
+        viewModel.boardMenus
             .asDriver(onErrorJustReturn: [])
             .drive(mainView.tableView.rx.items(cellIdentifier: MenuTableCell.identifier, cellType: MenuTableCell.self)) { (row, element, cell) in
                 cell.configCell(row: element)
@@ -62,7 +48,7 @@ extension MenuVC {
             .setDelegate(self)
             .disposed(by: viewModel.disposeBag)
         
-        Observable.zip(mainView.tableView.rx.itemSelected, mainView.tableView.rx.modelSelected(String.self))
+        Observable.zip(mainView.tableView.rx.itemSelected, mainView.tableView.rx.modelSelected(BoardsEntityValue.self))
             .map { $0.1 }
             .bind(with: self) { owner, value in
                 owner.updateNavTitleHandler?(value)
@@ -72,8 +58,7 @@ extension MenuVC {
         
     }
     
-    func configureVC() {
-    }
+    func configureVC() { }
 }
 
 extension MenuVC: UITableViewDelegate {
