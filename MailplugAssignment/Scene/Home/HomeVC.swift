@@ -71,7 +71,7 @@ extension HomeVC {
         
         navigationController?.navigationBar.frame = CGRect(x: 0, y: 44, width: view.frame.width, height: height)
         
-        navView.updateTitle(title: Strings.Menu.generalBoard)
+        navView.updateTitle(title: Strings.Test.generalBoard)
         navigationItem.titleView = navView
     }
 }

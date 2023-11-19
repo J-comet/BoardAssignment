@@ -13,7 +13,7 @@ struct Strings {
         static let emptyData = "empty_data".localized
     }
     
-    struct Menu {
+    struct Test {
         static let board = "board".localized
         static let generalBoard = "general_board".localized
         static let anonymousBoard = "anonymous_board".localized

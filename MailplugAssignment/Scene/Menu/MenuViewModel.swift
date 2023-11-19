@@ -14,10 +14,10 @@ final class MenuViewModel: BaseViewModel {
     
     let menus = BehaviorRelay(
         value: [
-            Strings.Menu.generalBoard,
-            Strings.Menu.anonymousBoard,
-            Strings.Menu.noticeBoard,
-            Strings.Menu.freeBoard
+            Strings.Test.generalBoard,
+            Strings.Test.anonymousBoard,
+            Strings.Test.noticeBoard,
+            Strings.Test.freeBoard
         ]
     )
     

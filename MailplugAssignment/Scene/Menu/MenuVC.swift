@@ -14,12 +14,29 @@ final class MenuVC: BaseViewController<MenuView, MenuViewModel> {
     
     var updateNavTitleHandler: ((String) -> Void)?
     
+    let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
         configureVC()
+        
+        requestTest()
     }
     
+    func requestTest() {
+        
+        BoardRepository.shared.getBoards()
+            .subscribe(with: self) { owner, result in
+                switch result {
+                case .success(let entity):
+                    print(entity)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+            .disposed(by: disposeBag)
+    }
 }
 
 extension MenuVC {

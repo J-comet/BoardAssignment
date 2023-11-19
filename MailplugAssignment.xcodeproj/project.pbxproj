@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0533B642B0A41980001B862 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0533B632B0A41980001B862 /* Network.swift */; };
+		C0533B662B0A41DF0001B862 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0533B652B0A41DF0001B862 /* Router.swift */; };
+		C0533B6E2B0A43B40001B862 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0533B6D2B0A43B40001B862 /* Constant.swift */; };
+		C0533B712B0A453F0001B862 /* BoardsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0533B702B0A453F0001B862 /* BoardsResponse.swift */; };
+		C0533B732B0A45D90001B862 /* CreatEntityProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0533B722B0A45D90001B862 /* CreatEntityProtocol.swift */; };
+		C0533B762B0A46EE0001B862 /* BoardsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0533B752B0A46EE0001B862 /* BoardsEntity.swift */; };
+		C0533B792B0A48DB0001B862 /* BoardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0533B782B0A48DB0001B862 /* BoardRepository.swift */; };
 		C05D27FD2B0642C900F98E23 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = C05D27FC2B0642C900F98E23 /* Then */; };
 		C05D28002B06452C00F98E23 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C05D27FF2B06452C00F98E23 /* Alamofire */; };
 		C05D28032B06455200F98E23 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = C05D28022B06455200F98E23 /* RxCocoa */; };
@@ -48,6 +55,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C0533B632B0A41980001B862 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		C0533B652B0A41DF0001B862 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		C0533B6D2B0A43B40001B862 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		C0533B702B0A453F0001B862 /* BoardsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardsResponse.swift; sourceTree = "<group>"; };
+		C0533B722B0A45D90001B862 /* CreatEntityProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatEntityProtocol.swift; sourceTree = "<group>"; };
+		C0533B752B0A46EE0001B862 /* BoardsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardsEntity.swift; sourceTree = "<group>"; };
+		C0533B782B0A48DB0001B862 /* BoardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardRepository.swift; sourceTree = "<group>"; };
 		C05D28092B06488800F98E23 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		C05D280C2B06495500F98E23 /* BaseCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCellProtocol.swift; sourceTree = "<group>"; };
 		C05D280E2B06497400F98E23 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -101,6 +115,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C0533B622B0A416D0001B862 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C0533B632B0A41980001B862 /* Network.swift */,
+				C0533B652B0A41DF0001B862 /* Router.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		C0533B672B0A427F0001B862 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C0533B742B0A46C40001B862 /* Entity */,
+				C0533B6F2B0A45360001B862 /* DTO */,
+				C0533B682B0A42A70001B862 /* Request */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C0533B682B0A42A70001B862 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		C0533B6C2B0A43AB0001B862 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C0533B6D2B0A43B40001B862 /* Constant.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C0533B6F2B0A45360001B862 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				C0533B702B0A453F0001B862 /* BoardsResponse.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		C0533B742B0A46C40001B862 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				C0533B752B0A46EE0001B862 /* BoardsEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		C0533B772B0A48D30001B862 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				C0533B782B0A48DB0001B862 /* BoardRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		C05D28142B064A2000F98E23 /* Resourse */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,7 +203,7 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		C05D28202B06693800F98E23 /* View */ = {
+		C05D28202B06693800F98E23 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
 				C05D28232B06761F00F98E23 /* EmptyView.swift */,
@@ -139,7 +211,7 @@
 				C05D28212B06695100F98E23 /* NavTitleView.swift */,
 				C05D28332B067BC600F98E23 /* SansNeoFontLabel.swift */,
 			);
-			path = View;
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 		C05D28252B0678E200F98E23 /* Font */ = {
@@ -177,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				C05D284E2B068C3200F98E23 /* ReusableViewProtocol.swift */,
+				C0533B722B0A45D90001B862 /* CreatEntityProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -204,13 +277,17 @@
 				C0DAE9692B05F44F0067279A /* AppDelegate.swift */,
 				C0DAE96B2B05F44F0067279A /* SceneDelegate.swift */,
 				C0DAE9832B05F5BD0067279A /* Base */,
+				C05D28202B06693800F98E23 /* CustomView */,
 				C05D28352B067CCE00F98E23 /* Enum */,
 				C05D281D2B06539400F98E23 /* Extension */,
 				C0DAE9742B05F4510067279A /* LaunchScreen.storyboard */,
+				C0533B672B0A427F0001B862 /* Model */,
+				C0533B622B0A416D0001B862 /* Network */,
 				C05D284D2B068C0F00F98E23 /* Protocol */,
+				C0533B772B0A48D30001B862 /* Repository */,
 				C05D28142B064A2000F98E23 /* Resourse */,
 				C0DAE9822B05F5AA0067279A /* Scene */,
-				C05D28202B06693800F98E23 /* View */,
+				C0533B6C2B0A43AB0001B862 /* Utils */,
 			);
 			path = MailplugAssignment;
 			sourceTree = "<group>";
@@ -330,7 +407,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C05D281A2B064AEA00F98E23 /* HomeView.swift in Sources */,
+				C0533B762B0A46EE0001B862 /* BoardsEntity.swift in Sources */,
 				C05D28372B067CD600F98E23 /* SpoqaHanSansNeoFonts.swift in Sources */,
+				C0533B732B0A45D90001B862 /* CreatEntityProtocol.swift in Sources */,
 				C05D283F2B06801000F98E23 /* Strings.swift in Sources */,
 				C05D28482B06827700F98E23 /* MenuViewModel.swift in Sources */,
 				C05D28242B06761F00F98E23 /* EmptyView.swift in Sources */,
@@ -338,8 +417,12 @@
 				C0DAE9812B05F5580067279A /* HomeVC.swift in Sources */,
 				C05D284F2B068C3200F98E23 /* ReusableViewProtocol.swift in Sources */,
 				C0DAE96A2B05F44F0067279A /* AppDelegate.swift in Sources */,
+				C0533B792B0A48DB0001B862 /* BoardRepository.swift in Sources */,
+				C0533B712B0A453F0001B862 /* BoardsResponse.swift in Sources */,
 				C05D281C2B064AF000F98E23 /* HomeViewModel.swift in Sources */,
+				C0533B642B0A41980001B862 /* Network.swift in Sources */,
 				C05D28412B06803A00F98E23 /* String+Extension.swift in Sources */,
+				C0533B662B0A41DF0001B862 /* Router.swift in Sources */,
 				C0DAE96C2B05F44F0067279A /* SceneDelegate.swift in Sources */,
 				C05D28112B06499100F98E23 /* BaseViewModel.swift in Sources */,
 				C05D280A2B06488800F98E23 /* BaseView.swift in Sources */,
@@ -347,6 +430,7 @@
 				C05D28442B06822700F98E23 /* MenuView.swift in Sources */,
 				C05D280D2B06495500F98E23 /* BaseCellProtocol.swift in Sources */,
 				C05D284C2B068BBC00F98E23 /* BaseTableViewCell.swift in Sources */,
+				C0533B6E2B0A43B40001B862 /* Constant.swift in Sources */,
 				C05D28342B067BC600F98E23 /* SansNeoFontLabel.swift in Sources */,
 				C05D28512B068CC000F98E23 /* MenuTableCell.swift in Sources */,
 				C05D281F2B0653C900F98E23 /* UIImage+Extension.swift in Sources */,
