@@ -48,7 +48,7 @@ extension HomeVC {
     func bindViewModel() {
         leftBarButton.rx.tap
             .bind(with: self) { owner, _ in
-                let vc = MenuVC(viewModel: MenuViewModel(boardRepository: BoardRepository()))
+                let vc = MenuVC(viewModel: MenuViewModel(remoteBoardRepository: RemoteBoardRepository()))
                 vc.modalPresentationStyle = .pageSheet
                 vc.updateNavTitleHandler = { boardEntity in
                     owner.navView.updateTitle(title: boardEntity.displayName)

@@ -1,5 +1,5 @@
 //
-//  BoardRepository.swift
+//  RemoteBoardRepository.swift
 //  MailplugAssignment
 //
 //  Created by 장혜성 on 2023/11/19.
@@ -9,7 +9,7 @@ import Foundation
 
 import RxSwift
 
-final class BoardRepository {
+final class RemoteBoardRepository {
     
     func getBoards() -> Single<Result<BoardsEntity, Error>> {
         return Single.create { single in

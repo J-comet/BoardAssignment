@@ -7,6 +7,7 @@
 
 import Foundation
 
+import RealmSwift
 
 struct BoardsEntity {
     let value: [BoardsEntityValue]
@@ -16,7 +17,16 @@ struct BoardsEntity {
     let total: Int
 }
 
-struct BoardsEntityValue {
-    let boardID: Int
-    let displayName: String
+final class BoardsEntityValue: Object {
+    @Persisted(primaryKey: true) var boardID: String
+    @Persisted var displayName: String
+    
+    convenience init(
+        boardID: String,
+        displayName: String
+    ) {
+        self.init()
+        self.boardID = boardID
+        self.displayName = displayName
+    }
 }

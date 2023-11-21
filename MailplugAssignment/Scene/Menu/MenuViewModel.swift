@@ -12,16 +12,16 @@ import RxCocoa
 
 final class MenuViewModel: BaseViewModel {
     
-    private var boardRepository: BoardRepository
+    private var remoteBoardRepository: RemoteBoardRepository
     
-    init(boardRepository: BoardRepository) {
-        self.boardRepository = boardRepository
+    init(remoteBoardRepository: RemoteBoardRepository) {
+        self.remoteBoardRepository = remoteBoardRepository
     }
     
     let boardMenus = PublishRelay<[BoardsEntityValue]>()
     
     func getBoards() {
-        boardRepository.getBoards()
+        remoteBoardRepository.getBoards()
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let entity):

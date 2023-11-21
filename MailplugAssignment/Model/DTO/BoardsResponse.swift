@@ -36,6 +36,6 @@ struct BoardsResponseValue: Decodable, CreatEntityProtocol {
     }
     
     func toEntity() -> BoardsEntityValue {
-        BoardsEntityValue(boardID: boardID ?? 0, displayName: displayName ?? "")
+        return BoardsEntityValue(boardID: String(boardID ?? 0), displayName: displayName ?? "")
     }
 }

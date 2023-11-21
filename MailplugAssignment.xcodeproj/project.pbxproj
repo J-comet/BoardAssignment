@@ -13,8 +13,14 @@
 		C0533B712B0A453F0001B862 /* BoardsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0533B702B0A453F0001B862 /* BoardsResponse.swift */; };
 		C0533B732B0A45D90001B862 /* CreatEntityProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0533B722B0A45D90001B862 /* CreatEntityProtocol.swift */; };
 		C0533B762B0A46EE0001B862 /* BoardsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0533B752B0A46EE0001B862 /* BoardsEntity.swift */; };
-		C0533B792B0A48DB0001B862 /* BoardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0533B782B0A48DB0001B862 /* BoardRepository.swift */; };
+		C0533B792B0A48DB0001B862 /* RemoteBoardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0533B782B0A48DB0001B862 /* RemoteBoardRepository.swift */; };
 		C0533B7B2B0A4ED30001B862 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0533B7A2B0A4ED30001B862 /* LoadingIndicator.swift */; };
+		C0533B9C2B0C32940001B862 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0533B9B2B0C32940001B862 /* SplashVC.swift */; };
+		C0533B9F2B0C32FD0001B862 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = C0533B9E2B0C32FD0001B862 /* Realm */; };
+		C0533BA12B0C32FD0001B862 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C0533BA02B0C32FD0001B862 /* RealmSwift */; };
+		C0533BA52B0C337E0001B862 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0533BA42B0C337E0001B862 /* SplashViewModel.swift */; };
+		C0533BA72B0C340F0001B862 /* RealmProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0533BA62B0C340F0001B862 /* RealmProtocol.swift */; };
+		C0533BAB2B0C35B20001B862 /* LocalBoardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0533BAA2B0C35B20001B862 /* LocalBoardRepository.swift */; };
 		C05D27FD2B0642C900F98E23 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = C05D27FC2B0642C900F98E23 /* Then */; };
 		C05D28002B06452C00F98E23 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C05D27FF2B06452C00F98E23 /* Alamofire */; };
 		C05D28032B06455200F98E23 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = C05D28022B06455200F98E23 /* RxCocoa */; };
@@ -62,8 +68,12 @@
 		C0533B702B0A453F0001B862 /* BoardsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardsResponse.swift; sourceTree = "<group>"; };
 		C0533B722B0A45D90001B862 /* CreatEntityProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatEntityProtocol.swift; sourceTree = "<group>"; };
 		C0533B752B0A46EE0001B862 /* BoardsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardsEntity.swift; sourceTree = "<group>"; };
-		C0533B782B0A48DB0001B862 /* BoardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardRepository.swift; sourceTree = "<group>"; };
+		C0533B782B0A48DB0001B862 /* RemoteBoardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteBoardRepository.swift; sourceTree = "<group>"; };
 		C0533B7A2B0A4ED30001B862 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
+		C0533B9B2B0C32940001B862 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
+		C0533BA42B0C337E0001B862 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		C0533BA62B0C340F0001B862 /* RealmProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmProtocol.swift; sourceTree = "<group>"; };
+		C0533BAA2B0C35B20001B862 /* LocalBoardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalBoardRepository.swift; sourceTree = "<group>"; };
 		C05D28092B06488800F98E23 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		C05D280C2B06495500F98E23 /* BaseCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCellProtocol.swift; sourceTree = "<group>"; };
 		C05D280E2B06497400F98E23 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -105,6 +115,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0533BA12B0C32FD0001B862 /* RealmSwift in Frameworks */,
+				C0533B9F2B0C32FD0001B862 /* Realm in Frameworks */,
 				C05D28082B06455E00F98E23 /* Kingfisher in Frameworks */,
 				C05D28002B06452C00F98E23 /* Alamofire in Frameworks */,
 				C0DAE97F2B05F4F30067279A /* SnapKit in Frameworks */,
@@ -170,9 +182,35 @@
 		C0533B772B0A48D30001B862 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				C0533B782B0A48DB0001B862 /* BoardRepository.swift */,
+				C0533BA92B0C35970001B862 /* Remote */,
+				C0533BA82B0C35920001B862 /* Local */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		C0533BA22B0C33620001B862 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				C0533B9B2B0C32940001B862 /* SplashVC.swift */,
+				C0533BA42B0C337E0001B862 /* SplashViewModel.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		C0533BA82B0C35920001B862 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				C0533BAA2B0C35B20001B862 /* LocalBoardRepository.swift */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		C0533BA92B0C35970001B862 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				C0533B782B0A48DB0001B862 /* RemoteBoardRepository.swift */,
+			);
+			path = Remote;
 			sourceTree = "<group>";
 		};
 		C05D28142B064A2000F98E23 /* Resourse */ = {
@@ -253,6 +291,7 @@
 			children = (
 				C05D284E2B068C3200F98E23 /* ReusableViewProtocol.swift */,
 				C0533B722B0A45D90001B862 /* CreatEntityProtocol.swift */,
+				C0533BA62B0C340F0001B862 /* RealmProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -298,6 +337,7 @@
 		C0DAE9822B05F5AA0067279A /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				C0533BA22B0C33620001B862 /* Splash */,
 				C05D28422B06821800F98E23 /* Menu */,
 				C05D28182B064ADC00F98E23 /* Home */,
 			);
@@ -340,6 +380,8 @@
 				C05D28022B06455200F98E23 /* RxCocoa */,
 				C05D28042B06455200F98E23 /* RxSwift */,
 				C05D28072B06455E00F98E23 /* Kingfisher */,
+				C0533B9E2B0C32FD0001B862 /* Realm */,
+				C0533BA02B0C32FD0001B862 /* RealmSwift */,
 			);
 			productName = MailplugAssignment;
 			productReference = C0DAE9662B05F44F0067279A /* MailplugAssignment.app */;
@@ -376,6 +418,7 @@
 				C05D27FE2B06452C00F98E23 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				C05D28012B06455200F98E23 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				C05D28062B06455E00F98E23 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				C0533B9D2B0C32FD0001B862 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = C0DAE9672B05F44F0067279A /* Products */;
 			projectDirPath = "";
@@ -414,19 +457,23 @@
 				C05D28372B067CD600F98E23 /* SpoqaHanSansNeoFonts.swift in Sources */,
 				C0533B732B0A45D90001B862 /* CreatEntityProtocol.swift in Sources */,
 				C05D283F2B06801000F98E23 /* Strings.swift in Sources */,
+				C0533B9C2B0C32940001B862 /* SplashVC.swift in Sources */,
 				C05D28482B06827700F98E23 /* MenuViewModel.swift in Sources */,
 				C05D28242B06761F00F98E23 /* EmptyView.swift in Sources */,
 				C05D28222B06695100F98E23 /* NavTitleView.swift in Sources */,
 				C0DAE9812B05F5580067279A /* HomeVC.swift in Sources */,
 				C05D284F2B068C3200F98E23 /* ReusableViewProtocol.swift in Sources */,
+				C0533BA52B0C337E0001B862 /* SplashViewModel.swift in Sources */,
 				C0DAE96A2B05F44F0067279A /* AppDelegate.swift in Sources */,
-				C0533B792B0A48DB0001B862 /* BoardRepository.swift in Sources */,
+				C0533B792B0A48DB0001B862 /* RemoteBoardRepository.swift in Sources */,
 				C0533B7B2B0A4ED30001B862 /* LoadingIndicator.swift in Sources */,
 				C0533B712B0A453F0001B862 /* BoardsResponse.swift in Sources */,
+				C0533BAB2B0C35B20001B862 /* LocalBoardRepository.swift in Sources */,
 				C05D281C2B064AF000F98E23 /* HomeViewModel.swift in Sources */,
 				C0533B642B0A41980001B862 /* Network.swift in Sources */,
 				C05D28412B06803A00F98E23 /* String+Extension.swift in Sources */,
 				C0533B662B0A41DF0001B862 /* Router.swift in Sources */,
+				C0533BA72B0C340F0001B862 /* RealmProtocol.swift in Sources */,
 				C0DAE96C2B05F44F0067279A /* SceneDelegate.swift in Sources */,
 				C05D28112B06499100F98E23 /* BaseViewModel.swift in Sources */,
 				C05D280A2B06488800F98E23 /* BaseView.swift in Sources */,
@@ -675,6 +722,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C0533B9D2B0C32FD0001B862 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		C05D27FB2B0642C900F98E23 /* XCRemoteSwiftPackageReference "Then" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/devxoul/Then.git";
@@ -718,6 +773,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C0533B9E2B0C32FD0001B862 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0533B9D2B0C32FD0001B862 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		C0533BA02B0C32FD0001B862 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0533B9D2B0C32FD0001B862 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		C05D27FC2B0642C900F98E23 /* Then */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C05D27FB2B0642C900F98E23 /* XCRemoteSwiftPackageReference "Then" */;
