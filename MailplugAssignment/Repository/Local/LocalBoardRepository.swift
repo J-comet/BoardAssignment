@@ -35,13 +35,14 @@ final class LocalBoardRepository: RealmProtocol {
         }
     }
     
-    func createAll(_ items: [BoardsEntityValue], errorHandler: () -> Void) {
+    func createAll(_ items: [BoardsEntityValue], completionHandler: (Bool) -> Void) {
         do {
             try realm?.write {
                 realm?.add(items)
+                completionHandler(true)
             }
         } catch {
-            errorHandler()
+            completionHandler(false)
         }
     }
     

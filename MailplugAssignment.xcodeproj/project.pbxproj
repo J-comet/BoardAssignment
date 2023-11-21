@@ -59,6 +59,8 @@
 		C0DAE9762B05F4510067279A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0DAE9742B05F4510067279A /* LaunchScreen.storyboard */; };
 		C0DAE97F2B05F4F30067279A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C0DAE97E2B05F4F30067279A /* SnapKit */; };
 		C0DAE9812B05F5580067279A /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DAE9802B05F5580067279A /* HomeVC.swift */; };
+		C0E798902B0CB86400E0EC05 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E7988F2B0CB86400E0EC05 /* UIViewController+Extension.swift */; };
+		C0E798922B0CC57D00E0EC05 /* Results+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E798912B0CC57D00E0EC05 /* Results+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +110,8 @@
 		C0DAE9752B05F4510067279A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C0DAE9772B05F4510067279A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0DAE9802B05F5580067279A /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		C0E7988F2B0CB86400E0EC05 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		C0E798912B0CC57D00E0EC05 /* Results+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Results+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +243,8 @@
 			children = (
 				C05D281E2B0653C900F98E23 /* UIImage+Extension.swift */,
 				C05D28402B06803A00F98E23 /* String+Extension.swift */,
+				C0E7988F2B0CB86400E0EC05 /* UIViewController+Extension.swift */,
+				C0E798912B0CC57D00E0EC05 /* Results+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -474,6 +480,7 @@
 				C05D28412B06803A00F98E23 /* String+Extension.swift in Sources */,
 				C0533B662B0A41DF0001B862 /* Router.swift in Sources */,
 				C0533BA72B0C340F0001B862 /* RealmProtocol.swift in Sources */,
+				C0E798902B0CB86400E0EC05 /* UIViewController+Extension.swift in Sources */,
 				C0DAE96C2B05F44F0067279A /* SceneDelegate.swift in Sources */,
 				C05D28112B06499100F98E23 /* BaseViewModel.swift in Sources */,
 				C05D280A2B06488800F98E23 /* BaseView.swift in Sources */,
@@ -485,6 +492,7 @@
 				C05D28342B067BC600F98E23 /* SansNeoFontLabel.swift in Sources */,
 				C05D28512B068CC000F98E23 /* MenuTableCell.swift in Sources */,
 				C05D281F2B0653C900F98E23 /* UIImage+Extension.swift in Sources */,
+				C0E798922B0CC57D00E0EC05 /* Results+Extension.swift in Sources */,
 				C05D284A2B06871F00F98E23 /* MPButton.swift in Sources */,
 				C05D280F2B06497400F98E23 /* BaseCollectionViewCell.swift in Sources */,
 				C05D28462B06824A00F98E23 /* MenuVC.swift in Sources */,

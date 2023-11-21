@@ -7,6 +7,29 @@
 
 import Foundation
 
+import RxSwift
+import RxCocoa
+
 final class HomeViewModel: BaseViewModel {
     
+    private var localBoardRepository: LocalBoardRepository
+    
+    init(localBoardRepository: LocalBoardRepository) {
+        self.localBoardRepository = localBoardRepository
+    }
+    
+    let boardMenuTitle = BehaviorRelay(value: "")
+    
+    func getBoardTitle() {
+        guard let items = localBoardRepository.fetch() else {
+            boardMenuTitle.accept("")
+            return
+        }
+
+        if items.isEmpty {
+            boardMenuTitle.accept("")
+        } else {
+            boardMenuTitle.accept(items.toArray().first?.displayName ?? "")
+        }
+    }
 }

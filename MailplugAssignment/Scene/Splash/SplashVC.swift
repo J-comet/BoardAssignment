@@ -24,6 +24,13 @@ final class SplashVC: UIViewController {
         print("realm 위치: ", Realm.Configuration.defaultConfiguration.fileURL!)
     }
     
+    private func appExit() {
+        UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            exit(0)
+        }
+    }
+    
     private func bindViewModel() {
         viewModel.isLoading
             .asDriver(onErrorJustReturn: true)
@@ -40,9 +47,15 @@ final class SplashVC: UIViewController {
             .asDriver(onErrorJustReturn: false)
             .drive(with: self) { owner, isSuccess in
                 if isSuccess {
-                    print("성공")
+                    let window = UIApplication.shared.windows[0] as UIWindow
+                    let vc = HomeVC(viewModel: HomeViewModel(localBoardRepository: LocalBoardRepository()))
+                    window.rootViewController = UINavigationController(rootViewController: vc)
                 } else {
-                    print("실패")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        owner.showAlert(title: "", msg: Strings.Error.forceExit, ok: Strings.Common.ok) { _ in
+                            owner.appExit()
+                        }
+                    }
                 }
             }
             .disposed(by: viewModel.disposeBag)

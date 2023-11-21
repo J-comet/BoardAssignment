@@ -7,13 +7,18 @@
 
 import Foundation
 
-struct Strings {
+enum Strings {
     
-    struct Home {
+    enum Home {
         static let emptyData = "empty_data".localized
     }
     
-    struct Common {
+    enum Common {
         static let board = "common_board".localized
+        static let ok = "common_ok".localized
+    }
+    
+    enum Error {
+        static let forceExit = "error_force_exit".localized
     }
 }

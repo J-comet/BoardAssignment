@@ -57,14 +57,14 @@ final class SplashViewModel: BaseViewModel {
     }
     
     private func saveBoardMenu(items: [BoardsEntityValue]) {
-        localBoardRepository.createAll(items) {
-            isLoading.accept(false)
-            isSuccess.accept(false)
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.isLoading.accept(false)
-            self.isSuccess.accept(true)
+        localBoardRepository.createAll(items) { isComplete in
+            if isComplete {
+                isLoading.accept(false)
+                isSuccess.accept(true)
+            } else {
+                isLoading.accept(false)
+                isSuccess.accept(false)
+            }
         }
     }
 }

@@ -10,4 +10,7 @@
 "empty_data" = "등록된 게시글이 없습니다.";
 
 "common_board" = "게시판";
+"common_ok" = "확인";
+
+"error_force_exit" = "오류가 발생했어요\n앱 종료 후 재시도해주세요";
 

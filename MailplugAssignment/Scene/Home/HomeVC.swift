@@ -39,6 +39,7 @@ final class HomeVC: BaseViewController<HomeView, HomeViewModel> {
         super.viewDidLoad()
         bindViewModel()
         configureVC()
+        viewModel.getBoardTitle()
     }
     
 }
@@ -48,7 +49,7 @@ extension HomeVC {
     func bindViewModel() {
         leftBarButton.rx.tap
             .bind(with: self) { owner, _ in
-                let vc = MenuVC(viewModel: MenuViewModel(remoteBoardRepository: RemoteBoardRepository()))
+                let vc = MenuVC(viewModel: MenuViewModel(localBoardRepository: LocalBoardRepository()))
                 vc.modalPresentationStyle = .pageSheet
                 vc.updateNavTitleHandler = { boardEntity in
                     owner.navView.updateTitle(title: boardEntity.displayName)
@@ -63,6 +64,13 @@ extension HomeVC {
                 print("검색 클릭")
             }
             .disposed(by: viewModel.disposeBag)
+        
+        viewModel.boardMenuTitle
+            .asDriver(onErrorJustReturn: "")
+            .drive(with: self) { owner, title in
+                owner.navView.updateTitle(title: title)
+            }
+            .disposed(by: viewModel.disposeBag)
     }
     
     func configureVC() {
@@ -70,8 +78,7 @@ extension HomeVC {
         navigationItem.rightBarButtonItem = rightBarButton
         
         navigationController?.navigationBar.frame = CGRect(x: 0, y: 44, width: view.frame.width, height: height)
-        
-        navView.updateTitle(title: "1234556")
+       
         navigationItem.titleView = navView
     }
 }
