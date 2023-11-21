@@ -72,14 +72,38 @@ extension HomeVC {
             }
             .disposed(by: viewModel.disposeBag)
         
-        // TODO: TableView RxCocoa 적용 예정
         viewModel.boardPosts
-            .asDriver()
-            .drive(with: self) { owner, posts in
-                print(posts)
+            .asDriver(onErrorJustReturn: [])
+            .drive(mainView.tableView.rx.items(cellIdentifier: HomePostTableCell.identifier, cellType: HomePostTableCell.self)) { (row, element, cell) in
+                cell.configCell(row: element)
             }
             .disposed(by: viewModel.disposeBag)
-            
+       
+        viewModel.boardPosts
+            .map { $0.isEmpty }
+            .bind(with: self) { owner, isEmpty in
+                if isEmpty {
+                    owner.mainView.hidePostTableView()
+                } else {
+                    owner.mainView.showPostTableView()
+                }
+            }
+            .disposed(by: viewModel.disposeBag)
+       
+        viewModel.isLoading
+            .bind(with: self) { owner, isLoading in
+                if isLoading {
+                    LoadingIndicator.show()
+                } else {
+                    LoadingIndicator.hide()
+                }
+            }
+            .disposed(by: viewModel.disposeBag)
+        
+        mainView.tableView
+            .rx
+            .setDelegate(self)
+            .disposed(by: viewModel.disposeBag)
     }
     
     func configureVC() {
@@ -92,3 +116,8 @@ extension HomeVC {
     }
 }
 
+extension HomeVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 74
+    }
+}

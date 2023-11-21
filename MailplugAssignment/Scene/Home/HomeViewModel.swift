@@ -30,15 +30,19 @@ final class HomeViewModel: BaseViewModel {
     private var total = 0
     
     let boardPosts = BehaviorRelay(value: [PostsEntityValue]())
+    let isLoading = PublishRelay<Bool>()
     
     func getCurrentBoard() {
+        isLoading.accept(true)
         guard let items = localBoardRepository.fetch() else {
             boardMenu.accept(BoardsEntityValue())
+            isLoading.accept(false)
             return
         }
 
         if items.isEmpty {
             boardMenu.accept(BoardsEntityValue())
+            isLoading.accept(false)
         } else {
             let item = items.toArray().first ?? BoardsEntityValue(boardID: 0, displayName: "")
             boardMenu.accept(item)
@@ -60,6 +64,7 @@ final class HomeViewModel: BaseViewModel {
                 case .failure:
                     owner.boardPosts.accept(owner.posts)
                 }
+                owner.isLoading.accept(false)
             }
             .disposed(by: disposeBag)
     }

@@ -18,11 +18,31 @@ final class HomeView: BaseView {
     
     private let emptyView = EmptyView().then {
         $0.updateTitle(image: .emptyPost, text: Strings.Home.emptyData)
+        $0.isHidden = true
+    }
+    
+    let tableView = UITableView().then {
+        $0.register(HomePostTableCell.self, forCellReuseIdentifier: HomePostTableCell.identifier)
+        $0.showsVerticalScrollIndicator = false
+        $0.alwaysBounceVertical = false
+        $0.separatorStyle = .none
+        $0.isHidden = true
+    }
+    
+    func showPostTableView() {
+        tableView.isHidden = false
+        emptyView.isHidden = true        
+    }
+    
+    func hidePostTableView() {
+        emptyView.isHidden = false
+        tableView.isHidden = true
     }
     
     override func configureHierarchy() {
         addSubview(containerView)
         addSubview(emptyView)
+        addSubview(tableView)
     }
     
     override func configureLayout() {
@@ -33,6 +53,11 @@ final class HomeView: BaseView {
         
         emptyView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+        
+        tableView.snp.makeConstraints { make in
+            make.top.bottom.equalTo(safeAreaLayoutGuide)
+            make.horizontalEdges.equalToSuperview()
         }
     }
 }
