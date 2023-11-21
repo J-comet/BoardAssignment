@@ -39,7 +39,7 @@ final class HomeVC: BaseViewController<HomeView, HomeViewModel> {
         super.viewDidLoad()
         bindViewModel()
         configureVC()
-        viewModel.getBoardTitle()
+        viewModel.getCurrentBoard()
     }
     
 }
@@ -65,12 +65,21 @@ extension HomeVC {
             }
             .disposed(by: viewModel.disposeBag)
         
-        viewModel.boardMenuTitle
-            .asDriver(onErrorJustReturn: "")
-            .drive(with: self) { owner, title in
-                owner.navView.updateTitle(title: title)
+        viewModel.boardMenu
+            .asDriver(onErrorJustReturn: BoardsEntityValue())
+            .drive(with: self) { owner, board in
+                owner.navView.updateTitle(title: board.displayName)                
             }
             .disposed(by: viewModel.disposeBag)
+        
+        // TODO: TableView RxCocoa 적용 예정
+        viewModel.boardPosts
+            .asDriver()
+            .drive(with: self) { owner, posts in
+                print(posts)
+            }
+            .disposed(by: viewModel.disposeBag)
+            
     }
     
     func configureVC() {

@@ -18,11 +18,11 @@ struct BoardsEntity {
 }
 
 final class BoardsEntityValue: Object {
-    @Persisted(primaryKey: true) var boardID: String
+    @Persisted(primaryKey: true) var boardID: Int
     @Persisted var displayName: String
     
     convenience init(
-        boardID: String,
+        boardID: Int,
         displayName: String
     ) {
         self.init()

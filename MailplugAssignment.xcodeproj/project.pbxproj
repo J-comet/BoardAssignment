@@ -61,6 +61,11 @@
 		C0DAE9812B05F5580067279A /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DAE9802B05F5580067279A /* HomeVC.swift */; };
 		C0E798902B0CB86400E0EC05 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E7988F2B0CB86400E0EC05 /* UIViewController+Extension.swift */; };
 		C0E798922B0CC57D00E0EC05 /* Results+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E798912B0CC57D00E0EC05 /* Results+Extension.swift */; };
+		C0E798942B0CD0FE00E0EC05 /* PostsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E798932B0CD0FE00E0EC05 /* PostsRequest.swift */; };
+		C0E798962B0CD21100E0EC05 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E798952B0CD21100E0EC05 /* Encodable.swift */; };
+		C0E798982B0CD25300E0EC05 /* PostsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E798972B0CD25300E0EC05 /* PostsEntity.swift */; };
+		C0E7989A2B0CD25E00E0EC05 /* PostsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E798992B0CD25E00E0EC05 /* PostsResponse.swift */; };
+		C0E7989C2B0CD8B300E0EC05 /* RemotePostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E7989B2B0CD8B300E0EC05 /* RemotePostRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +117,11 @@
 		C0DAE9802B05F5580067279A /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		C0E7988F2B0CB86400E0EC05 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		C0E798912B0CC57D00E0EC05 /* Results+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Results+Extension.swift"; sourceTree = "<group>"; };
+		C0E798932B0CD0FE00E0EC05 /* PostsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsRequest.swift; sourceTree = "<group>"; };
+		C0E798952B0CD21100E0EC05 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
+		C0E798972B0CD25300E0EC05 /* PostsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsEntity.swift; sourceTree = "<group>"; };
+		C0E798992B0CD25E00E0EC05 /* PostsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsResponse.swift; sourceTree = "<group>"; };
+		C0E7989B2B0CD8B300E0EC05 /* RemotePostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePostRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +165,7 @@
 		C0533B682B0A42A70001B862 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				C0E798932B0CD0FE00E0EC05 /* PostsRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -171,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				C0533B702B0A453F0001B862 /* BoardsResponse.swift */,
+				C0E798992B0CD25E00E0EC05 /* PostsResponse.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -179,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				C0533B752B0A46EE0001B862 /* BoardsEntity.swift */,
+				C0E798972B0CD25300E0EC05 /* PostsEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -213,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				C0533B782B0A48DB0001B862 /* RemoteBoardRepository.swift */,
+				C0E7989B2B0CD8B300E0EC05 /* RemotePostRepository.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -245,6 +259,7 @@
 				C05D28402B06803A00F98E23 /* String+Extension.swift */,
 				C0E7988F2B0CB86400E0EC05 /* UIViewController+Extension.swift */,
 				C0E798912B0CC57D00E0EC05 /* Results+Extension.swift */,
+				C0E798952B0CD21100E0EC05 /* Encodable.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -459,11 +474,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C05D281A2B064AEA00F98E23 /* HomeView.swift in Sources */,
+				C0E798942B0CD0FE00E0EC05 /* PostsRequest.swift in Sources */,
 				C0533B762B0A46EE0001B862 /* BoardsEntity.swift in Sources */,
 				C05D28372B067CD600F98E23 /* SpoqaHanSansNeoFonts.swift in Sources */,
 				C0533B732B0A45D90001B862 /* CreatEntityProtocol.swift in Sources */,
 				C05D283F2B06801000F98E23 /* Strings.swift in Sources */,
+				C0E7989A2B0CD25E00E0EC05 /* PostsResponse.swift in Sources */,
 				C0533B9C2B0C32940001B862 /* SplashVC.swift in Sources */,
+				C0E7989C2B0CD8B300E0EC05 /* RemotePostRepository.swift in Sources */,
 				C05D28482B06827700F98E23 /* MenuViewModel.swift in Sources */,
 				C05D28242B06761F00F98E23 /* EmptyView.swift in Sources */,
 				C05D28222B06695100F98E23 /* NavTitleView.swift in Sources */,
@@ -482,6 +500,7 @@
 				C0533BA72B0C340F0001B862 /* RealmProtocol.swift in Sources */,
 				C0E798902B0CB86400E0EC05 /* UIViewController+Extension.swift in Sources */,
 				C0DAE96C2B05F44F0067279A /* SceneDelegate.swift in Sources */,
+				C0E798982B0CD25300E0EC05 /* PostsEntity.swift in Sources */,
 				C05D28112B06499100F98E23 /* BaseViewModel.swift in Sources */,
 				C05D280A2B06488800F98E23 /* BaseView.swift in Sources */,
 				C05D28132B0649A800F98E23 /* BaseViewController.swift in Sources */,
@@ -496,6 +515,7 @@
 				C05D284A2B06871F00F98E23 /* MPButton.swift in Sources */,
 				C05D280F2B06497400F98E23 /* BaseCollectionViewCell.swift in Sources */,
 				C05D28462B06824A00F98E23 /* MenuVC.swift in Sources */,
+				C0E798962B0CD21100E0EC05 /* Encodable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -48,7 +48,12 @@ final class SplashVC: UIViewController {
             .drive(with: self) { owner, isSuccess in
                 if isSuccess {
                     let window = UIApplication.shared.windows[0] as UIWindow
-                    let vc = HomeVC(viewModel: HomeViewModel(localBoardRepository: LocalBoardRepository()))
+                    let vc = HomeVC(
+                        viewModel: HomeViewModel(
+                            localBoardRepository: LocalBoardRepository(),
+                            remotePostRepository: RemotePostRepository()
+                        )
+                    )
                     window.rootViewController = UINavigationController(rootViewController: vc)
                 } else {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

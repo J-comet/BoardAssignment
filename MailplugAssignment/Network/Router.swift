@@ -11,15 +11,20 @@ import Alamofire
 enum Router: URLRequestConvertible {
     
     case getBoards
+    case getPosts(boardID: Int, request: PostsRequest)
 
     private var baseURL: URL {
         URL(string: Constant.API.baseURL)!
     }
     
+//https://mp-dev.mail-server.kr/api/v2/boards/{boards_id}/posts?offset=0&limit=30
+    
     private var path: String {
         switch self {
         case .getBoards:
             return "boards"
+        case .getPosts(let id, _):
+            return "boards/\(id)/posts"
         }
     }
     
@@ -31,6 +36,8 @@ enum Router: URLRequestConvertible {
         switch self {
         case .getBoards:
             return nil
+        case .getPosts(_, let request):
+            return request.toEncodable
         }
     }
     
