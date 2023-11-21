@@ -67,6 +67,8 @@
 		C0E7989A2B0CD25E00E0EC05 /* PostsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E798992B0CD25E00E0EC05 /* PostsResponse.swift */; };
 		C0E7989C2B0CD8B300E0EC05 /* RemotePostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E7989B2B0CD8B300E0EC05 /* RemotePostRepository.swift */; };
 		C0E7989E2B0CE2C300E0EC05 /* HomePostTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E7989D2B0CE2C300E0EC05 /* HomePostTableCell.swift */; };
+		C0E798A02B0CF29700E0EC05 /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E7989F2B0CF29700E0EC05 /* BadgeLabel.swift */; };
+		C0E798A22B0CF71700E0EC05 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E798A12B0CF71700E0EC05 /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,6 +126,8 @@
 		C0E798992B0CD25E00E0EC05 /* PostsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsResponse.swift; sourceTree = "<group>"; };
 		C0E7989B2B0CD8B300E0EC05 /* RemotePostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePostRepository.swift; sourceTree = "<group>"; };
 		C0E7989D2B0CE2C300E0EC05 /* HomePostTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostTableCell.swift; sourceTree = "<group>"; };
+		C0E7989F2B0CF29700E0EC05 /* BadgeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeLabel.swift; sourceTree = "<group>"; };
+		C0E798A12B0CF71700E0EC05 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +267,7 @@
 				C0E7988F2B0CB86400E0EC05 /* UIViewController+Extension.swift */,
 				C0E798912B0CC57D00E0EC05 /* Results+Extension.swift */,
 				C0E798952B0CD21100E0EC05 /* Encodable.swift */,
+				C0E798A12B0CF71700E0EC05 /* UIColor+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -275,6 +280,7 @@
 				C05D28212B06695100F98E23 /* NavTitleView.swift */,
 				C05D28332B067BC600F98E23 /* SansNeoFontLabel.swift */,
 				C0533B7A2B0A4ED30001B862 /* LoadingIndicator.swift */,
+				C0E7989F2B0CF29700E0EC05 /* BadgeLabel.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -493,6 +499,7 @@
 				C0533BA52B0C337E0001B862 /* SplashViewModel.swift in Sources */,
 				C0DAE96A2B05F44F0067279A /* AppDelegate.swift in Sources */,
 				C0533B792B0A48DB0001B862 /* RemoteBoardRepository.swift in Sources */,
+				C0E798A22B0CF71700E0EC05 /* UIColor+Extension.swift in Sources */,
 				C0533B7B2B0A4ED30001B862 /* LoadingIndicator.swift in Sources */,
 				C0533B712B0A453F0001B862 /* BoardsResponse.swift in Sources */,
 				C0533BAB2B0C35B20001B862 /* LocalBoardRepository.swift in Sources */,
@@ -503,6 +510,7 @@
 				C0533BA72B0C340F0001B862 /* RealmProtocol.swift in Sources */,
 				C0E798902B0CB86400E0EC05 /* UIViewController+Extension.swift in Sources */,
 				C0DAE96C2B05F44F0067279A /* SceneDelegate.swift in Sources */,
+				C0E798A02B0CF29700E0EC05 /* BadgeLabel.swift in Sources */,
 				C0E798982B0CD25300E0EC05 /* PostsEntity.swift in Sources */,
 				C05D28112B06499100F98E23 /* BaseViewModel.swift in Sources */,
 				C05D280A2B06488800F98E23 /* BaseView.swift in Sources */,

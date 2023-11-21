@@ -42,34 +42,10 @@ final class HomeVC: BaseViewController<HomeView, HomeViewModel> {
         viewModel.getCurrentBoard()
     }
     
-}
-
-extension HomeVC {
-    
-    func bindViewModel() {
-        leftBarButton.rx.tap
-            .bind(with: self) { owner, _ in
-                let vc = MenuVC(viewModel: MenuViewModel(localBoardRepository: LocalBoardRepository()))
-                vc.modalPresentationStyle = .pageSheet
-                vc.updateNavTitleHandler = { boardEntity in
-                    owner.navView.updateTitle(title: boardEntity.displayName)
-                    owner.navigationItem.titleView = owner.navView
-                }
-                owner.present(vc, animated: true)
-            }
-            .disposed(by: viewModel.disposeBag)
-        
-        rightBarButton.rx.tap
-            .bind(with: self) { owner, _ in
-                print("검색 클릭")
-            }
-            .disposed(by: viewModel.disposeBag)
-        
-        viewModel.boardMenu
-            .asDriver(onErrorJustReturn: BoardsEntityValue())
-            .drive(with: self) { owner, board in
-                owner.navView.updateTitle(title: board.displayName)                
-            }
+    private func bindTable() {
+        mainView.tableView
+            .rx
+            .setDelegate(self)
             .disposed(by: viewModel.disposeBag)
         
         viewModel.boardPosts
@@ -89,7 +65,43 @@ extension HomeVC {
                 }
             }
             .disposed(by: viewModel.disposeBag)
-       
+    }
+    
+    private func bindNav() {
+        viewModel.boardMenu
+            .asDriver(onErrorJustReturn: BoardsEntityValue())
+            .drive(with: self) { owner, board in
+                owner.navView.updateTitle(title: board.displayName)
+            }
+            .disposed(by: viewModel.disposeBag)
+        
+        leftBarButton.rx.tap
+            .bind(with: self) { owner, _ in
+                let vc = MenuVC(viewModel: MenuViewModel(localBoardRepository: LocalBoardRepository()))
+                vc.modalPresentationStyle = .pageSheet
+                vc.updateNavTitleHandler = { boardEntity in
+                    owner.navView.updateTitle(title: boardEntity.displayName)
+                    owner.navigationItem.titleView = owner.navView
+                }
+                owner.present(vc, animated: true)
+            }
+            .disposed(by: viewModel.disposeBag)
+        
+        rightBarButton.rx.tap
+            .bind(with: self) { owner, _ in
+                print("검색 클릭")
+            }
+            .disposed(by: viewModel.disposeBag)
+    }
+    
+}
+
+extension HomeVC {
+    
+    func bindViewModel() {
+        bindNav()
+        bindTable()
+        
         viewModel.isLoading
             .bind(with: self) { owner, isLoading in
                 if isLoading {
@@ -98,11 +110,6 @@ extension HomeVC {
                     LoadingIndicator.hide()
                 }
             }
-            .disposed(by: viewModel.disposeBag)
-        
-        mainView.tableView
-            .rx
-            .setDelegate(self)
             .disposed(by: viewModel.disposeBag)
     }
     

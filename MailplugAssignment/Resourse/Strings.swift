@@ -18,6 +18,11 @@ enum Strings {
         static let ok = "common_ok".localized
     }
     
+    enum Badge {
+        static let notice = "badge_notice".localized
+        static let reply = "badge_reply".localized
+    }
+    
     enum Error {
         static let forceExit = "error_force_exit".localized
     }

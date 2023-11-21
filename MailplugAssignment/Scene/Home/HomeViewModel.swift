@@ -51,7 +51,7 @@ final class HomeViewModel: BaseViewModel {
     }
     
     // TODO: 페이징처리 로직 추가 필요
-    private func getPosts(boardID: Int, offset: Int) {
+    func getPosts(boardID: Int, offset: Int) {
         remotePostRepository.getPosts(boardID: boardID, offset: offset)
             .subscribe(with: self) { owner, result in
                 switch result {

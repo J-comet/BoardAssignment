@@ -33,6 +33,28 @@ struct PostsEntityValue {
     let isAnonymous: Bool           // 익명 여부
     let isOwner: Bool               // 글 소유자
     let hasReply: Bool              // 답글 유무
+    
+    enum PostType: String {
+        case notice
+        case reply
+        case normal
+                
+        var backgroundColor: String {
+            switch self {
+            case .notice: "FFC744"
+            case .reply: "47392B"
+            case .normal: ""
+            }
+        }
+        
+        var category: String {
+            switch self {
+            case .notice: Strings.Badge.notice
+            case .reply: Strings.Badge.reply
+            case .normal: ""
+            }
+        }
+    }
 }
 
 struct PostsEntityWriter {
