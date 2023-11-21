@@ -8,6 +8,6 @@
 import Foundation
 
 struct PostsRequest: Encodable {
-    let offset: Int
-    let limit: Int
+    let offset: String
+    let limit: String
 }

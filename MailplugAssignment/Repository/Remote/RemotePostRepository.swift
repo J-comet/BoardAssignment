@@ -16,7 +16,7 @@ final class RemotePostRepository {
             Network.shared.request(
                 api: .getPosts(
                     boardID: boardID,
-                    request: PostsRequest(offset: offset, limit: 30)
+                    request: PostsRequest(offset: String(offset), limit: Constant.API.limit)
                 ),
                 type: PostsResponse.self) { result in
                     switch result {

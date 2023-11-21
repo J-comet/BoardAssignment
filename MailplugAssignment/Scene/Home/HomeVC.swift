@@ -43,10 +43,10 @@ final class HomeVC: BaseViewController<HomeView, HomeViewModel> {
     }
     
     private func bindTable() {
-        mainView.tableView
-            .rx
-            .setDelegate(self)
-            .disposed(by: viewModel.disposeBag)
+//        mainView.tableView
+//            .rx
+//            .setDelegate(self)
+//            .disposed(by: viewModel.disposeBag)
         
         viewModel.boardPosts
             .asDriver(onErrorJustReturn: [])
@@ -62,6 +62,23 @@ final class HomeVC: BaseViewController<HomeView, HomeViewModel> {
                     owner.mainView.hidePostTableView()
                 } else {
                     owner.mainView.showPostTableView()
+                }
+            }
+            .disposed(by: viewModel.disposeBag)
+        
+        mainView.tableView
+            .rx
+            .didScroll
+            .bind(with: self){ owner, _ in
+                let scrollViewContentHeight = owner.mainView.tableView.contentSize.height
+                let scrollOffsetThreshold = scrollViewContentHeight - owner.mainView.tableView.bounds.height
+                
+                if owner.mainView.tableView.contentOffset.y > scrollOffsetThreshold
+                    && owner.mainView.tableView.isDragging {
+                    if !owner.viewModel.isPaging && owner.viewModel.isContinue {
+                        owner.viewModel.getPosts()
+                        owner.viewModel.isPaging = true
+                    }
                 }
             }
             .disposed(by: viewModel.disposeBag)
@@ -82,6 +99,14 @@ final class HomeVC: BaseViewController<HomeView, HomeViewModel> {
                 vc.updateNavTitleHandler = { boardEntity in
                     owner.navView.updateTitle(title: boardEntity.displayName)
                     owner.navigationItem.titleView = owner.navView
+                    owner.viewModel.boardID = boardEntity.boardID
+                    owner.viewModel.offset = 0
+                    owner.viewModel.getPosts()
+                   
+                    guard let _ = owner.mainView.tableView.cellForRow(at: .init(row: 0, section: 0)) else {
+                        return
+                    }                    
+                    owner.mainView.tableView.scrollToRow(at:.init(row: 0, section: 0), at: .top, animated: false)
                 }
                 owner.present(vc, animated: true)
             }
@@ -123,8 +148,8 @@ extension HomeVC {
     }
 }
 
-extension HomeVC: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 74
-    }
-}
+//extension HomeVC: UITableViewDelegate {
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 74
+//    }
+//}

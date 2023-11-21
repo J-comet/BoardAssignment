@@ -30,6 +30,7 @@ final class MenuView: BaseView {
         $0.showsVerticalScrollIndicator = false
         $0.alwaysBounceVertical = false
         $0.separatorStyle = .none
+        $0.rowHeight = 48
     }
     
     override func configureHierarchy() {

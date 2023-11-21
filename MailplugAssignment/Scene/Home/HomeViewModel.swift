@@ -23,49 +23,71 @@ final class HomeViewModel: BaseViewModel {
         self.remotePostRepository = remotePostRepository
     }
     
+    var boardID = 0
+    
     let boardMenu = BehaviorRelay(value: BoardsEntityValue())
     
     private var posts: [PostsEntityValue] = []
     var offset = 0
     private var total = 0
     
+    var isContinue = false  // 페이징 가능 여부 체크
+    var isPaging = false    // 페이징 중인지 체크
     let boardPosts = BehaviorRelay(value: [PostsEntityValue]())
     let isLoading = PublishRelay<Bool>()
     
+    
     func getCurrentBoard() {
-        isLoading.accept(true)
         guard let items = localBoardRepository.fetch() else {
             boardMenu.accept(BoardsEntityValue())
-            isLoading.accept(false)
             return
         }
 
         if items.isEmpty {
             boardMenu.accept(BoardsEntityValue())
-            isLoading.accept(false)
         } else {
             let item = items.toArray().first ?? BoardsEntityValue(boardID: 0, displayName: "")
             boardMenu.accept(item)
-            getPosts(boardID: item.boardID, offset: offset)
+            boardID = item.boardID
+            getPosts()
         }
     }
     
-    // TODO: 페이징처리 로직 추가 필요
-    func getPosts(boardID: Int, offset: Int) {
-        remotePostRepository.getPosts(boardID: boardID, offset: offset)
-            .subscribe(with: self) { owner, result in
-                switch result {
-                case .success(let data):
-                    if offset == 0 {
-                        owner.total = data.total
+    func getPosts() {
+        if offset == 0 {
+            boardPosts.accept([])
+        }
+        isLoading.accept(true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.remotePostRepository.getPosts(boardID: self.boardID, offset: self.offset)
+                .subscribe(with: self) { owner, result in
+                    switch result {
+                    case .success(let data):
+                        if owner.offset == 0 {
+                            owner.total = data.total
+                            owner.posts.removeAll()
+                        }
+
+                        print("결과결과")
+                        
+                        owner.offset += Int(Constant.API.limit)!
+                        owner.posts.append(contentsOf: data.value)
+                        owner.boardPosts.accept(owner.posts)
+                        
+                        if owner.offset >= owner.total {
+                            owner.isContinue = false
+                        } else {
+                            owner.isContinue = true
+                        }
+                        
+                        owner.isPaging = false
+                        
+                    case .failure:
+                        owner.boardPosts.accept(owner.posts)
                     }
-                    owner.posts.append(contentsOf: data.value)
-                    owner.boardPosts.accept(owner.posts)
-                case .failure:
-                    owner.boardPosts.accept(owner.posts)
+                    owner.isLoading.accept(false)
                 }
-                owner.isLoading.accept(false)
-            }
-            .disposed(by: disposeBag)
+                .disposed(by: self.disposeBag)
+        }
     }
 }

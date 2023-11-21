@@ -34,16 +34,16 @@ extension MenuVC {
             }
             .disposed(by: viewModel.disposeBag)
         
+//        mainView.tableView
+//            .rx
+//            .setDelegate(self)
+//            .disposed(by: viewModel.disposeBag)
+        
         viewModel.boardMenus
             .asDriver(onErrorJustReturn: [])
             .drive(mainView.tableView.rx.items(cellIdentifier: MenuTableCell.identifier, cellType: MenuTableCell.self)) { (row, element, cell) in
                 cell.configCell(row: element)
             }
-            .disposed(by: viewModel.disposeBag)
-        
-        mainView.tableView
-            .rx
-            .setDelegate(self)
             .disposed(by: viewModel.disposeBag)
         
         Observable.zip(mainView.tableView.rx.itemSelected, mainView.tableView.rx.modelSelected(BoardsEntityValue.self))
@@ -59,8 +59,8 @@ extension MenuVC {
     func configureVC() { }
 }
 
-extension MenuVC: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 48
-    }
-}
+//extension MenuVC: UITableViewDelegate {
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 48
+//    }
+//}

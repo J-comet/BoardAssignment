@@ -26,6 +26,7 @@ final class HomeView: BaseView {
         $0.showsVerticalScrollIndicator = false
         $0.alwaysBounceVertical = false
         $0.separatorStyle = .none
+        $0.rowHeight = 74
         $0.isHidden = true
     }
     
