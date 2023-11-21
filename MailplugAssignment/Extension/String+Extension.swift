@@ -17,10 +17,13 @@ extension String {
         return String(format: self.localized, arguments: arguments)
     }
     
-    mutating func firstCharUppercased() -> String {
-        let upper = self[self.startIndex].uppercased()
-        self.removeFirst(1)
-        self = upper + self
-        return self
+    func formattedDate() -> String {
+        let formatter = Foundation.DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let date  = formatter.date(from: self)
+        formatter.dateFormat = "YY-MM-dd"
+        guard let date else { return "" }
+        return formatter.string(from: date)
     }
+    
 }

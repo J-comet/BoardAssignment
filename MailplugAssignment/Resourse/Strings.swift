@@ -16,6 +16,8 @@ enum Strings {
     enum Common {
         static let board = "common_board".localized
         static let ok = "common_ok".localized
+        static let myPost = "common_my_post".localized
+        static let anonymous = "common_anonymous".localized
     }
     
     enum Badge {

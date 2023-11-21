@@ -34,11 +34,24 @@ struct PostsEntityValue {
     let isOwner: Bool               // 글 소유자
     let hasReply: Bool              // 답글 유무
     
+    var postDisplayInfo: String {
+        let writer = if isOwner {
+            Strings.Common.myPost
+        } else {
+            if isAnonymous {
+                Strings.Common.anonymous
+            } else {
+                writer.displayName
+            }
+        }
+        return writer + " • " + createdDateTime.formattedDate() + " • "
+    }
+    
     enum PostType: String {
         case notice
         case reply
         case normal
-                
+        
         var backgroundColor: String {
             switch self {
             case .notice: "FFC744"

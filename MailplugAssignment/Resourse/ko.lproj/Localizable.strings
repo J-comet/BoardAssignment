@@ -11,6 +11,9 @@
 
 "common_board" = "게시판";
 "common_ok" = "확인";
+"common_my_post" = "내가 쓴 글";
+"common_anonymous" = "익명";
+
 
 "badge_notice" = "공지";
 "badge_reply" = "Re";
