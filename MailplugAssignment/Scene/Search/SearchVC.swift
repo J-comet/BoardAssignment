@@ -30,6 +30,14 @@ final class SearchVC: BaseViewController<SearchView,SearchViewModel> {
         configureVC()
     }
     
+    private func moveResultSearchVC(board: BoardsEntityValue, searchTargetEntity: SearchTargetEntity) {
+        let vc = SearchResultVC(viewModel: SearchResultViewModel(remoteSearchRepository: RemoteSearchRepository()))
+        vc.target = searchTargetEntity
+        vc.board = board
+        vc.navigationItem.hidesBackButton = true
+        navigationController?.pushViewController(vc, animated: false)
+    }
+    
     private func bindTextField() {
         mainView.searchTextField
             .rx
@@ -41,8 +49,9 @@ final class SearchVC: BaseViewController<SearchView,SearchViewModel> {
                     owner.showAlert(title: "", msg: Strings.Error.emptySearchText, ok: Strings.Common.ok)
                     owner.mainView.searchTextField.becomeFirstResponder()
                 } else {
-                    owner.viewModel.updateSearchData(target: .all, search: searchText, offset: 0)
-                    owner.viewModel.searchPost()
+                    // Done 버튼 눌렀을 때 결과 화면으로 이동
+                    guard let board = owner.board else { return }
+                    owner.moveResultSearchVC(board: board, searchTargetEntity: SearchTargetEntity(target: .all, search: searchText))
                 }
             }
             .disposed(by: viewModel.disposeBag)
@@ -51,21 +60,23 @@ final class SearchVC: BaseViewController<SearchView,SearchViewModel> {
         mainView.searchTextField
             .rx
             .text
-            .orEmpty            
+            .orEmpty
             .asDriver()
             .distinctUntilChanged()
             .debounce(.seconds(1))
             .drive(with: self, onNext: { owner, text in
+                
                 if !text.isEmpty {
                     owner.mainView.targetTableView.isHidden = false
+                    owner.mainView.emptyRecentSearchView.isHidden = true
                     owner.viewModel.updateSearchTargetDatas(search: text)
                 } else {
                     // TODO: 최근 검색 기록 있으면 최근기록 보여주고 없으면 빈 리스트 보여주기
-                    owner.mainView.emptyRecentSearchView.isHidden = true
+                    owner.mainView.emptyRecentSearchView.isHidden = false
+                    owner.mainView.targetTableView.isHidden = true
                 }
             })
             .disposed(by: viewModel.disposeBag)
-        
     }
     
     private func bindTargetTableView() {
@@ -79,11 +90,14 @@ final class SearchVC: BaseViewController<SearchView,SearchViewModel> {
         Observable.zip(mainView.targetTableView.rx.itemSelected, mainView.targetTableView.rx.modelSelected(SearchTargetEntity.self))
             .map { $0.1 }
             .bind(with: self) { owner, value in
-                // TODO: 검색 API 통신하기
-                print(value)
+                // 타겟 아이템 눌렀을 때 결과 화면으로 이동
+                guard let board = owner.board else { return }
+                owner.moveResultSearchVC(board: board, searchTargetEntity: value)
             }
             .disposed(by: viewModel.disposeBag)
     }
+    
+    
 }
 
 extension SearchVC {
@@ -91,7 +105,7 @@ extension SearchVC {
     func configureVC() {
         guard let board else { return }
         navigationItem.rightBarButtonItem = rightBarButton
-        viewModel.updateSearchData(boardID: board.boardID)
+        
         mainView.searchTextField.placeholder = Strings.Search.placeHolder.localized(with: [board.displayName])
         mainView.searchTextField.frame = .init(x: 0, y: 0, width: UIScreen.main.bounds.size.width * 0.8, height: 44)
         navigationItem.titleView = mainView.searchTextField

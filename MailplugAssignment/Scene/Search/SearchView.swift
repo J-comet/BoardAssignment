@@ -14,8 +14,9 @@ import Then
  1. 최초 입장시 최근 검색어 있는지 확인
  2. 최근 검색어 있으면 해당 TableView 보여주기 / 없을 때는 최근 검색어 없는 화면 보여주기
  3. 검색어 입력되었을 때 타켓선택 가능한 4개뷰 보여주기
- 4. 검색했을 때 결과 있으면 PostTableView / 없으면 검색 결과 없는 화면 보여주기
+ 4. 검색누르면 검색결과화면으로 이동
  */
+
 final class SearchView: BaseView {
     
     private let containerView = UIView().then {
@@ -40,7 +41,7 @@ final class SearchView: BaseView {
     
     override func configureHierarchy() {
         addSubview(containerView)
-        containerView.addSubview(emptyRecentSearchView)
+        containerView.addSubview(emptyRecentSearchView)        
         containerView.addSubview(targetTableView)
     }
     
@@ -58,6 +59,7 @@ final class SearchView: BaseView {
             make.top.bottom.equalToSuperview()
             make.horizontalEdges.equalToSuperview()
         }
+ 
     }
     
 }

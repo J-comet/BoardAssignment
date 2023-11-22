@@ -128,7 +128,7 @@ final class HomeVC: BaseViewController<HomeView, HomeViewModel> {
         
         rightBarButton.rx.tap
             .bind(with: self) { owner, _ in
-                let vc = SearchVC(viewModel: SearchViewModel(remoteSearchRepository: RemoteSearchRepository()))
+                let vc = SearchVC(viewModel: SearchViewModel())
                 vc.board = owner.viewModel.currentBoard
                 vc.navigationItem.hidesBackButton = true
                 owner.navigationController?.pushViewController(vc, animated: false)
