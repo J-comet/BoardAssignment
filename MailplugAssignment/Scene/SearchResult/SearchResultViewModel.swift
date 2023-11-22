@@ -24,8 +24,12 @@ final class SearchResultViewModel: BaseViewModel {
     var target: SearchRequest.SearchTarget = .all
     var search = ""
     var offset = 0
-    private var posts: [PostsEntityValue] = []
     
+    private var posts: [PostsEntityValue] = []
+    private var total = 0
+    
+    var isContinue = false  // 페이징 가능 여부 체크
+    var isPaging = false    // 페이징 중인지 체크
     let boardPosts = BehaviorRelay(value: [PostsEntityValue]())
     let isLoading = PublishRelay<Bool>()
     
@@ -54,21 +58,33 @@ final class SearchResultViewModel: BaseViewModel {
             posts.removeAll()
         }
         isLoading.accept(true)
-        remoteSearchRepository.search(boardID: boardID, target: target, search: search, offset: offset)
-            .subscribe(with: self) { owner, result in
-                switch result {
-                case .success(let data):
-                    
-                    print(data.value)
-                    
-                    owner.posts.append(contentsOf: data.value)
-                    owner.boardPosts.accept(owner.posts)
-                    
-                case .failure:
-                    owner.boardPosts.accept(owner.posts)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.remoteSearchRepository.search(boardID: self.boardID, target: self.target, search: self.search, offset: self.offset)
+                .subscribe(with: self) { owner, result in
+                    switch result {
+                    case .success(let data):
+                        if owner.offset == 0 {
+                            owner.total = data.total
+                            owner.posts.removeAll()
+                        }
+                        
+                        owner.offset += Int(Constant.API.limit)!
+                        owner.posts.append(contentsOf: data.value)
+                        owner.boardPosts.accept(owner.posts)
+                        
+                        if owner.offset >= owner.total {
+                            owner.isContinue = false
+                        } else {
+                            owner.isContinue = true
+                        }
+                        owner.isPaging = false
+                        
+                    case .failure:
+                        owner.boardPosts.accept(owner.posts)
+                    }
+                    owner.isLoading.accept(false)
                 }
-                owner.isLoading.accept(false)
-            }
-            .disposed(by: disposeBag)
+                .disposed(by: self.disposeBag)
+        }
     }
 }

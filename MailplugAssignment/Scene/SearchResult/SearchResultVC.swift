@@ -31,7 +31,7 @@ final class SearchResultVC: BaseViewController<SearchResultView,SearchResultView
         bindViewModel()
         
         guard let boardEntity, let targetEntity else { return }
-        viewModel.updateSearchData(boardID: boardEntity.boardID, target: targetEntity.target)
+        viewModel.updateSearchData(boardID: boardEntity.boardID, target: targetEntity.target, search: targetEntity.search)
         viewModel.searchPost()
     }
     
@@ -58,23 +58,22 @@ final class SearchResultVC: BaseViewController<SearchResultView,SearchResultView
             }
             .disposed(by: viewModel.disposeBag)
         
-        // TODO: 페이징
-        //        mainView.postTableView
-        //            .rx
-        //            .didScroll
-        //            .bind(with: self){ owner, _ in
-        //                let scrollViewContentHeight = owner.mainView.tableView.contentSize.height
-        //                let scrollOffsetThreshold = scrollViewContentHeight - owner.mainView.tableView.bounds.height
-        //
-        //                if owner.mainView.postTableView.contentOffset.y > scrollOffsetThreshold
-        //                    && owner.mainView.postTableView.isDragging {
-        //                    if !owner.viewModel.isPaging && owner.viewModel.isContinue {
-        //                        owner.viewModel.getPosts()
-        //                        owner.viewModel.isPaging = true
-        //                    }
-        //                }
-        //            }
-        //            .disposed(by: viewModel.disposeBag)
+        mainView.postTableView
+            .rx
+            .didScroll
+            .bind(with: self){ owner, _ in
+                let scrollViewContentHeight = owner.mainView.postTableView.contentSize.height
+                let scrollOffsetThreshold = scrollViewContentHeight - owner.mainView.postTableView.bounds.height
+                
+                if owner.mainView.postTableView.contentOffset.y > scrollOffsetThreshold
+                    && owner.mainView.postTableView.isDragging {
+                    if !owner.viewModel.isPaging && owner.viewModel.isContinue {
+                        owner.viewModel.searchPost()
+                        owner.viewModel.isPaging = true
+                    }
+                }
+            }
+            .disposed(by: viewModel.disposeBag)
     }
 }
 
@@ -83,9 +82,21 @@ extension SearchResultVC {
     func bindViewModel() {
         bindPostTableView()
         
-        rightBarButton.rx.tap
+        rightBarButton
+            .rx
+            .tap
             .bind(with: self) { owner, _ in
                 owner.navigationController?.popViewController(animated: false)
+            }
+            .disposed(by: viewModel.disposeBag)
+        
+        viewModel.isLoading
+            .bind { isLoading in
+                if isLoading {
+                    LoadingIndicator.show()
+                } else {
+                    LoadingIndicator.hide()
+                }
             }
             .disposed(by: viewModel.disposeBag)
     }
@@ -105,14 +116,14 @@ extension SearchResultVC {
             NSAttributedString.Key.paragraphStyle : paragraphStyle
         ])
         attributedText.append(category)
-
+        
         let search = NSAttributedString(string: "\(targetEntity.search)", attributes: [
             NSAttributedString.Key.font: UIFont.italicSystemFont(ofSize: 16),
             NSAttributedString.Key.foregroundColor: UIColor.mpSecondaryBlackChocolate700,
             NSAttributedString.Key.paragraphStyle : paragraphStyle
         ])
         attributedText.append(search)
-
+        
         mainView.searchTextField.attributedText = attributedText
         
         mainView.searchTextField.placeholder = Strings.Search.placeHolder.localized(with: [boardEntity.displayName])

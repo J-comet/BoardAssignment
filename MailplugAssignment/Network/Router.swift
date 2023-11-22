@@ -18,8 +18,6 @@ enum Router: URLRequestConvertible {
         URL(string: Constant.API.baseURL)!
     }
     
-    //https://mp-dev.mail-server.kr/api/v2/boards/{board_id}/posts?search=&searchTarget=&offset=&limit=
-    
     private var path: String {
         switch self {
         case .getBoards:
@@ -52,6 +50,9 @@ enum Router: URLRequestConvertible {
         request.method = method
         request.headers = HTTPHeaders(Constant.API.defaultHttpHeaders)
         request = try URLEncodedFormParameterEncoder(destination: .methodDependent).encode(query, into: request)
+        
+        print(request.url)
+        
         return request
     }
     
