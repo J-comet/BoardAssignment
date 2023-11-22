@@ -14,7 +14,7 @@ import Then
 
 
 final class HomeVC: BaseViewController<HomeView, HomeViewModel> {
-  
+    
     private lazy var navTitleLabel = NavTitleLabel()
     
     private let leftBarButton = UIBarButtonItem(
@@ -38,35 +38,27 @@ final class HomeVC: BaseViewController<HomeView, HomeViewModel> {
         viewModel.getCurrentBoard()
     }
     
-    private func showSearchBar() {
-        mainView.searchBar.frame = .init(x: 500, y: 0, width: 50, height: 44)
-        navigationItem.titleView = mainView.searchBar
-        navigationItem.setLeftBarButton(nil, animated: true)
-        navigationItem.setRightBarButton(nil, animated: true)
-        
-        UIView.animate(withDuration: 0.2, animations: {
-            self.mainView.searchBar.frame = .init(x: 0, y: 0, width: UIScreen.main.bounds.size.width * 0.8, height: 44)
-          }, completion: { finished in
-              self.mainView.searchBar.becomeFirstResponder()
-        })
-    }
+//    private func showSearchBar() {
+//        mainView.searchBar.frame = .init(x: 500, y: 0, width: 50, height: 44)
+//        navigationItem.titleView = mainView.searchBar
+//        navigationItem.setLeftBarButton(nil, animated: true)
+//        navigationItem.setRightBarButton(nil, animated: true)
+//        
+//        UIView.animate(withDuration: 0.2, animations: {
+//            self.mainView.searchBar.frame = .init(x: 0, y: 0, width: UIScreen.main.bounds.size.width * 0.8, height: 44)
+//        }, completion: { finished in
+//            self.mainView.searchBar.becomeFirstResponder()
+//        })
+//    }
+//    
+//    private func hideSearchBar() {
+//        mainView.searchBar.resignFirstResponder()
+//        navigationItem.setLeftBarButton(leftBarButton, animated: false)
+//        navigationItem.setRightBarButton(rightBarButton, animated: false)
+//        navigationItem.titleView = navTitleLabel
+//    }
     
-    private func hideSearchBar() {
-        mainView.searchBar.resignFirstResponder()
-        navigationItem.setLeftBarButton(leftBarButton, animated: false)
-        navigationItem.setRightBarButton(rightBarButton, animated: false)
-        navigationItem.titleView = navTitleLabel
-      }
     
-    private func bindSearchBar() {
-        mainView.searchBar
-            .rx
-            .cancelButtonClicked
-            .bind(with: self) { owner, _ in
-                owner.hideSearchBar()
-            }
-            .disposed(by: viewModel.disposeBag)
-    }
     
     private func bindTable() {
         
@@ -76,7 +68,7 @@ final class HomeVC: BaseViewController<HomeView, HomeViewModel> {
                 cell.configCell(row: element)
             }
             .disposed(by: viewModel.disposeBag)
-       
+        
         viewModel.boardPosts
             .map { $0.isEmpty }
             .bind(with: self) { owner, isEmpty in
@@ -121,13 +113,13 @@ final class HomeVC: BaseViewController<HomeView, HomeViewModel> {
                 vc.updateNavTitleHandler = { boardEntity in
                     owner.navTitleLabel.text = boardEntity.displayName
                     owner.navigationItem.titleView = owner.navTitleLabel
-                    owner.viewModel.boardID = boardEntity.boardID
+                    owner.viewModel.currentBoard = boardEntity
                     owner.viewModel.offset = 0
                     owner.viewModel.getPosts()
-                   
+                    
                     guard let _ = owner.mainView.tableView.cellForRow(at: .init(row: 0, section: 0)) else {
                         return
-                    }                    
+                    }
                     owner.mainView.tableView.scrollToRow(at:.init(row: 0, section: 0), at: .top, animated: false)
                 }
                 owner.present(vc, animated: true)
@@ -136,8 +128,10 @@ final class HomeVC: BaseViewController<HomeView, HomeViewModel> {
         
         rightBarButton.rx.tap
             .bind(with: self) { owner, _ in
-                owner.showSearchBar()
-                print("검색 클릭")
+                let vc = SearchVC(viewModel: SearchViewModel())
+                vc.board = owner.viewModel.currentBoard
+                vc.navigationItem.hidesBackButton = true
+                owner.navigationController?.pushViewController(vc, animated: false)
             }
             .disposed(by: viewModel.disposeBag)
     }
@@ -147,7 +141,6 @@ final class HomeVC: BaseViewController<HomeView, HomeViewModel> {
 extension HomeVC {
     
     func bindViewModel() {
-        bindSearchBar()
         bindNav()
         bindTable()
         

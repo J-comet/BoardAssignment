@@ -11,12 +11,7 @@ import SnapKit
 import Then
 
 final class HomeView: BaseView {
-    
-    let searchBar = UISearchBar().then {
-        $0.showsCancelButton = true
-        $0.returnKeyType = .search
-    }
-    
+  
     private let containerView = UIView().then {
         $0.backgroundColor = .mpNeutralCoolGrey100
     }

@@ -23,7 +23,7 @@ final class HomeViewModel: BaseViewModel {
         self.remotePostRepository = remotePostRepository
     }
     
-    var boardID = 0
+//    var boardID = 0
     
     let boardMenu = BehaviorRelay(value: BoardsEntityValue())
     
@@ -36,6 +36,7 @@ final class HomeViewModel: BaseViewModel {
     let boardPosts = BehaviorRelay(value: [PostsEntityValue]())
     let isLoading = PublishRelay<Bool>()
     
+    var currentBoard = BoardsEntityValue()
     
     func getCurrentBoard() {
         guard let items = localBoardRepository.fetch() else {
@@ -48,7 +49,7 @@ final class HomeViewModel: BaseViewModel {
         } else {
             let item = items.toArray().first ?? BoardsEntityValue(boardID: 0, displayName: "")
             boardMenu.accept(item)
-            boardID = item.boardID
+            currentBoard = item
             getPosts()
         }
     }
@@ -59,7 +60,7 @@ final class HomeViewModel: BaseViewModel {
         }
         isLoading.accept(true)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.remotePostRepository.getPosts(boardID: self.boardID, offset: self.offset)
+            self.remotePostRepository.getPosts(boardID: self.currentBoard.boardID, offset: self.offset)
                 .subscribe(with: self) { owner, result in
                     switch result {
                     case .success(let data):
