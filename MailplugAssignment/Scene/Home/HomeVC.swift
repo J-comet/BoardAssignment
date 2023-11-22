@@ -14,12 +14,8 @@ import Then
 
 
 final class HomeVC: BaseViewController<HomeView, HomeViewModel> {
-    
-    private let height = CGFloat(44)
-    
-    private lazy var navView = NavTitleView().then {
-        $0.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.height)
-    }
+  
+    private lazy var navTitleLabel = NavTitleLabel()
     
     private let leftBarButton = UIBarButtonItem(
         image: .hamburgerMenu.defaultIconStyle,
@@ -42,11 +38,37 @@ final class HomeVC: BaseViewController<HomeView, HomeViewModel> {
         viewModel.getCurrentBoard()
     }
     
+    private func showSearchBar() {
+        mainView.searchBar.frame = .init(x: 500, y: 0, width: 50, height: 44)
+        navigationItem.titleView = mainView.searchBar
+        navigationItem.setLeftBarButton(nil, animated: true)
+        navigationItem.setRightBarButton(nil, animated: true)
+        
+        UIView.animate(withDuration: 0.2, animations: {
+            self.mainView.searchBar.frame = .init(x: 0, y: 0, width: UIScreen.main.bounds.size.width * 0.8, height: 44)
+          }, completion: { finished in
+              self.mainView.searchBar.becomeFirstResponder()
+        })
+    }
+    
+    private func hideSearchBar() {
+        mainView.searchBar.resignFirstResponder()
+        navigationItem.setLeftBarButton(leftBarButton, animated: false)
+        navigationItem.setRightBarButton(rightBarButton, animated: false)
+        navigationItem.titleView = navTitleLabel
+      }
+    
+    private func bindSearchBar() {
+        mainView.searchBar
+            .rx
+            .cancelButtonClicked
+            .bind(with: self) { owner, _ in
+                owner.hideSearchBar()
+            }
+            .disposed(by: viewModel.disposeBag)
+    }
+    
     private func bindTable() {
-//        mainView.tableView
-//            .rx
-//            .setDelegate(self)
-//            .disposed(by: viewModel.disposeBag)
         
         viewModel.boardPosts
             .asDriver(onErrorJustReturn: [])
@@ -88,7 +110,7 @@ final class HomeVC: BaseViewController<HomeView, HomeViewModel> {
         viewModel.boardMenu
             .asDriver(onErrorJustReturn: BoardsEntityValue())
             .drive(with: self) { owner, board in
-                owner.navView.updateTitle(title: board.displayName)
+                owner.navTitleLabel.text = board.displayName
             }
             .disposed(by: viewModel.disposeBag)
         
@@ -97,8 +119,8 @@ final class HomeVC: BaseViewController<HomeView, HomeViewModel> {
                 let vc = MenuVC(viewModel: MenuViewModel(localBoardRepository: LocalBoardRepository()))
                 vc.modalPresentationStyle = .pageSheet
                 vc.updateNavTitleHandler = { boardEntity in
-                    owner.navView.updateTitle(title: boardEntity.displayName)
-                    owner.navigationItem.titleView = owner.navView
+                    owner.navTitleLabel.text = boardEntity.displayName
+                    owner.navigationItem.titleView = owner.navTitleLabel
                     owner.viewModel.boardID = boardEntity.boardID
                     owner.viewModel.offset = 0
                     owner.viewModel.getPosts()
@@ -114,6 +136,7 @@ final class HomeVC: BaseViewController<HomeView, HomeViewModel> {
         
         rightBarButton.rx.tap
             .bind(with: self) { owner, _ in
+                owner.showSearchBar()
                 print("검색 클릭")
             }
             .disposed(by: viewModel.disposeBag)
@@ -124,6 +147,7 @@ final class HomeVC: BaseViewController<HomeView, HomeViewModel> {
 extension HomeVC {
     
     func bindViewModel() {
+        bindSearchBar()
         bindNav()
         bindTable()
         
@@ -141,15 +165,6 @@ extension HomeVC {
     func configureVC() {
         navigationItem.leftBarButtonItem = leftBarButton
         navigationItem.rightBarButtonItem = rightBarButton
-        
-        navigationController?.navigationBar.frame = CGRect(x: 0, y: 44, width: view.frame.width, height: height)
-       
-        navigationItem.titleView = navView
+        navigationItem.titleView = navTitleLabel
     }
 }
-
-//extension HomeVC: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 74
-//    }
-//}
