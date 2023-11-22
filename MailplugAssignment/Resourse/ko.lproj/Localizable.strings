@@ -11,13 +11,16 @@
 
 "common_board" = "게시판";
 "common_ok" = "확인";
+"common_cancel" = "취소";
 "common_my_post" = "내가 쓴 글";
 "common_anonymous" = "익명";
-
 
 "badge_notice" = "공지";
 "badge_reply" = "Re";
 
+"search_placeholder" = "%@에서 검색";
+
 
 "error_force_exit" = "오류가 발생했어요\n앱 종료 후 재시도해주세요";
+"error_search_empty" = "검색어를 입력해주세요";
 

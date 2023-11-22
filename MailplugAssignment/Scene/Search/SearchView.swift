@@ -12,10 +12,7 @@ import Then
 
 final class SearchView: BaseView {
     
-    let searchBar = UISearchBar().then {
-        $0.showsCancelButton = true
-        $0.returnKeyType = .search
-    }
+    let searchTextField = SearchTextField()
     
     override func configureHierarchy() {
         
