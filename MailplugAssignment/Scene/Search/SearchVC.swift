@@ -32,8 +32,8 @@ final class SearchVC: BaseViewController<SearchView,SearchViewModel> {
     
     private func moveResultSearchVC(board: BoardsEntityValue, searchTargetEntity: SearchTargetEntity) {
         let vc = SearchResultVC(viewModel: SearchResultViewModel(remoteSearchRepository: RemoteSearchRepository()))
-        vc.target = searchTargetEntity
-        vc.board = board
+        vc.targetEntity = searchTargetEntity
+        vc.boardEntity = board
         vc.navigationItem.hidesBackButton = true
         navigationController?.pushViewController(vc, animated: false)
     }
