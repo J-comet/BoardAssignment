@@ -68,8 +68,6 @@ final class HomeViewModel: BaseViewModel {
                             owner.total = data.total
                             owner.posts.removeAll()
                         }
-
-                        print("결과결과")
                         
                         owner.offset += Int(Constant.API.limit)!
                         owner.posts.append(contentsOf: data.value)

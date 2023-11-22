@@ -41,7 +41,9 @@ final class SearchVC: BaseViewController<SearchView,SearchViewModel> {
                     owner.showAlert(title: "", msg: Strings.Error.emptySearchText, ok: Strings.Common.ok)
                     owner.mainView.searchTextField.becomeFirstResponder()
                 } else {
-                    print("검색")
+                    // TODO: target 선택 UI 개발
+                    owner.viewModel.updateSearchData(target: .all, search: searchText, offset: 0)
+                    owner.viewModel.searchPost()
                 }
             }
             .disposed(by: viewModel.disposeBag)
@@ -51,8 +53,9 @@ final class SearchVC: BaseViewController<SearchView,SearchViewModel> {
 extension SearchVC {
     
     func configureVC() {
-        navigationItem.rightBarButtonItem = rightBarButton
         guard let board else { return }
+        navigationItem.rightBarButtonItem = rightBarButton
+        viewModel.updateSearchData(boardID: board.boardID)
         mainView.searchTextField.placeholder = Strings.Search.placeHolder.localized(with: [board.displayName])
         mainView.searchTextField.frame = .init(x: 0, y: 0, width: UIScreen.main.bounds.size.width * 0.8, height: 44)
         navigationItem.titleView = mainView.searchTextField

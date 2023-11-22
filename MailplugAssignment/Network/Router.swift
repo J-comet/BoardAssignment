@@ -12,18 +12,21 @@ enum Router: URLRequestConvertible {
     
     case getBoards
     case getPosts(boardID: Int, request: PostsRequest)
+    case search(boardID: Int, request: SearchRequest)
 
     private var baseURL: URL {
         URL(string: Constant.API.baseURL)!
     }
     
-//https://mp-dev.mail-server.kr/api/v2/boards/{boards_id}/posts?offset=0&limit=30
+    //https://mp-dev.mail-server.kr/api/v2/boards/{board_id}/posts?search=&searchTarget=&offset=&limit=
     
     private var path: String {
         switch self {
         case .getBoards:
             return "boards"
         case .getPosts(let id, _):
+            return "boards/\(id)/posts"
+        case .search(let id, _):
             return "boards/\(id)/posts"
         }
     }
@@ -37,6 +40,8 @@ enum Router: URLRequestConvertible {
         case .getBoards:
             return nil
         case .getPosts(_, let request):
+            return request.toEncodable
+        case .search(_, let request):
             return request.toEncodable
         }
     }

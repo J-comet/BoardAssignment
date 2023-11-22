@@ -57,6 +57,8 @@
 		C08A8CA42B0DC34000A87717 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08A8CA32B0DC34000A87717 /* SearchView.swift */; };
 		C08A8CA62B0DC34700A87717 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08A8CA52B0DC34700A87717 /* SearchViewModel.swift */; };
 		C08A8CA82B0DC88000A87717 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08A8CA72B0DC88000A87717 /* SearchTextField.swift */; };
+		C08A8CAA2B0DD48100A87717 /* SearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08A8CA92B0DD48100A87717 /* SearchRequest.swift */; };
+		C08A8CAC2B0DD63900A87717 /* RemoteSearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08A8CAB2B0DD63900A87717 /* RemoteSearchRepository.swift */; };
 		C0DAE96A2B05F44F0067279A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DAE9692B05F44F0067279A /* AppDelegate.swift */; };
 		C0DAE96C2B05F44F0067279A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DAE96B2B05F44F0067279A /* SceneDelegate.swift */; };
 		C0DAE9732B05F4510067279A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0DAE9722B05F4510067279A /* Assets.xcassets */; };
@@ -119,6 +121,8 @@
 		C08A8CA32B0DC34000A87717 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		C08A8CA52B0DC34700A87717 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		C08A8CA72B0DC88000A87717 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
+		C08A8CA92B0DD48100A87717 /* SearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequest.swift; sourceTree = "<group>"; };
+		C08A8CAB2B0DD63900A87717 /* RemoteSearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteSearchRepository.swift; sourceTree = "<group>"; };
 		C0DAE9662B05F44F0067279A /* MailplugAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MailplugAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0DAE9692B05F44F0067279A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0DAE96B2B05F44F0067279A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				C0E798932B0CD0FE00E0EC05 /* PostsRequest.swift */,
+				C08A8CA92B0DD48100A87717 /* SearchRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -241,6 +246,7 @@
 			children = (
 				C0533B782B0A48DB0001B862 /* RemoteBoardRepository.swift */,
 				C0E7989B2B0CD8B300E0EC05 /* RemotePostRepository.swift */,
+				C08A8CAB2B0DD63900A87717 /* RemoteSearchRepository.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -536,6 +542,7 @@
 				C0E798A02B0CF29700E0EC05 /* BadgeLabel.swift in Sources */,
 				C0E798982B0CD25300E0EC05 /* PostsEntity.swift in Sources */,
 				C05D28112B06499100F98E23 /* BaseViewModel.swift in Sources */,
+				C08A8CAA2B0DD48100A87717 /* SearchRequest.swift in Sources */,
 				C05D280A2B06488800F98E23 /* BaseView.swift in Sources */,
 				C05D28132B0649A800F98E23 /* BaseViewController.swift in Sources */,
 				C05D28442B06822700F98E23 /* MenuView.swift in Sources */,
@@ -550,6 +557,7 @@
 				C0E798922B0CC57D00E0EC05 /* Results+Extension.swift in Sources */,
 				C05D284A2B06871F00F98E23 /* MPButton.swift in Sources */,
 				C05D280F2B06497400F98E23 /* BaseCollectionViewCell.swift in Sources */,
+				C08A8CAC2B0DD63900A87717 /* RemoteSearchRepository.swift in Sources */,
 				C05D28462B06824A00F98E23 /* MenuVC.swift in Sources */,
 				C0E798962B0CD21100E0EC05 /* Encodable.swift in Sources */,
 			);
