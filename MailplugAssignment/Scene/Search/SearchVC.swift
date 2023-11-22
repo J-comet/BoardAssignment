@@ -31,6 +31,11 @@ final class SearchVC: BaseViewController<SearchView,SearchViewModel> {
         viewModel.localSearchHistoryObserve()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        mainView.searchTextField.text = nil
+    }
+    
     private func moveResultSearchVC(board: BoardsEntityValue, searchTargetEntity: SearchTargetEntity) {
         let vc = SearchResultVC(viewModel: SearchResultViewModel(remoteSearchRepository: RemoteSearchRepository()))
         vc.targetEntity = searchTargetEntity
@@ -45,6 +50,7 @@ final class SearchVC: BaseViewController<SearchView,SearchViewModel> {
             .controlEvent(.editingDidEndOnExit)
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .withLatestFrom(mainView.searchTextField.rx.text.orEmpty)
+            .share()
             .bind(with: self) { owner, searchText in
                 if searchText.isEmpty {
                     owner.showAlert(title: "", msg: Strings.Error.emptySearchText, ok: Strings.Common.ok)
@@ -110,10 +116,36 @@ final class SearchVC: BaseViewController<SearchView,SearchViewModel> {
     }
     
     private func bindRecentSearchTableView() {
+        
         viewModel.recentSearchHistoryData
+            .share()
+            .bind(with: self) { owner, datas in
+                if datas.isEmpty {
+                    owner.mainView.recentSearchTableView.isHidden = true
+                    owner.mainView.emptyRecentSearchView.isHidden = false
+                    owner.mainView.targetTableView.isHidden = true
+                } else {
+                    owner.mainView.recentSearchTableView.isHidden = false
+                    owner.mainView.emptyRecentSearchView.isHidden = true
+                    owner.mainView.targetTableView.isHidden = true
+                }
+            }
+            .disposed(by: viewModel.disposeBag)
+            
+        
+        viewModel.recentSearchHistoryData
+            .share()
             .asDriver(onErrorJustReturn: [])
             .drive(mainView.recentSearchTableView.rx.items(cellIdentifier: RecentSearchTableCell.identifier, cellType: RecentSearchTableCell.self)) { (row, element, cell) in
                 cell.configCell(row: element)
+                
+                cell.removeTapGesture
+                    .rx
+                    .event
+                    .bind(with: self, onNext: { owner, gesture in
+                        owner.viewModel.removeSearchKeyword(id: element.id)
+                    })
+                    .disposed(by: cell.disposeBag)
             }
             .disposed(by: viewModel.disposeBag)
         

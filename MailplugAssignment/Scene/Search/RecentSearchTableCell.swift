@@ -7,10 +7,13 @@
 
 import UIKit
 
+import RxSwift
 import SnapKit
 import Then
 
 final class RecentSearchTableCell: BaseTableViewCell<SearchTargetEntity> {
+    
+    var disposeBag = DisposeBag()
     
     private let contentStackView = UIStackView().then {
         $0.axis = .horizontal
@@ -27,7 +30,9 @@ final class RecentSearchTableCell: BaseTableViewCell<SearchTargetEntity> {
         $0.textColor = .mpSecondaryBlackChocolate700
     }
     
-    let closeImage = UIImageView().then {
+    lazy var closeImage = UIImageView().then {
+        $0.isUserInteractionEnabled = true
+        $0.addGestureRecognizer(removeTapGesture)
         $0.contentMode = .scaleAspectFit
         let insetValue: CGFloat = 3
         $0.image = .close.withAlignmentRectInsets(UIEdgeInsets(top: insetValue, left: insetValue, bottom: insetValue, right: insetValue))
@@ -39,6 +44,13 @@ final class RecentSearchTableCell: BaseTableViewCell<SearchTargetEntity> {
     
     private let lineView = UIView().then {
         $0.backgroundColor = .mpNeutralCoolGrey200
+    }
+    
+    let removeTapGesture = UITapGestureRecognizer()
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
     }
     
     override func configCell(row: SearchTargetEntity) {

@@ -46,6 +46,7 @@ final class SearchResultVC: BaseViewController<SearchResultView,SearchResultView
         
         viewModel.boardPosts
             .map { $0.isEmpty }
+            .share()
             .bind(with: self) { owner, isEmpty in
                 if isEmpty {
                     // 검색 결과 없는 화면

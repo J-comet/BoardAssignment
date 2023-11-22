@@ -61,6 +61,13 @@ final class SearchViewModel: BaseViewModel {
         }
     }
     
+    func removeSearchKeyword(id: String) {
+        guard let item = localSearchRepository.objectByPrimaryKey(primaryKey: id) else { return }
+        localSearchRepository.delete(item) {
+            print("\(id) 삭제 실패")
+        }
+    }
+    
     func localSearchHistoryObserve() {
         guard let tasks = localSearchRepository.fetch() else { return }
         notificationToken = tasks.observe { [weak self] changes in

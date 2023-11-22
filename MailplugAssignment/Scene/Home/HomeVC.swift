@@ -71,6 +71,7 @@ final class HomeVC: BaseViewController<HomeView, HomeViewModel> {
         
         viewModel.boardPosts
             .map { $0.isEmpty }
+            .share()
             .bind(with: self) { owner, isEmpty in
                 if isEmpty {
                     owner.mainView.hidePostTableView()
