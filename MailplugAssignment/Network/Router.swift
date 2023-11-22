@@ -50,9 +50,6 @@ enum Router: URLRequestConvertible {
         request.method = method
         request.headers = HTTPHeaders(Constant.API.defaultHttpHeaders)
         request = try URLEncodedFormParameterEncoder(destination: .methodDependent).encode(query, into: request)
-        
-        print(request.url)
-        
         return request
     }
     

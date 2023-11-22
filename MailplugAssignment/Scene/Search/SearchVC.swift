@@ -28,6 +28,7 @@ final class SearchVC: BaseViewController<SearchView,SearchViewModel> {
         super.viewDidLoad()
         bindViewModel()
         configureVC()
+        viewModel.localSearchHistoryObserve()
     }
     
     private func moveResultSearchVC(board: BoardsEntityValue, searchTargetEntity: SearchTargetEntity) {
@@ -51,7 +52,9 @@ final class SearchVC: BaseViewController<SearchView,SearchViewModel> {
                 } else {
                     // Done 버튼 눌렀을 때 결과 화면으로 이동
                     guard let board = owner.board else { return }
-                    owner.moveResultSearchVC(board: board, searchTargetEntity: SearchTargetEntity(target: .all, search: searchText))
+                    let searchTargetEntity = SearchTargetEntity(target: .all, search: searchText)
+                    owner.viewModel.saveSearchKeyword(entity: searchTargetEntity)
+                    owner.moveResultSearchVC(board: board, searchTargetEntity: searchTargetEntity)
                 }
             }
             .disposed(by: viewModel.disposeBag)
@@ -80,7 +83,7 @@ final class SearchVC: BaseViewController<SearchView,SearchViewModel> {
     }
     
     private func bindTargetTableView() {
-        viewModel.searchTargets
+        viewModel.searchTargetMenu
             .asDriver(onErrorJustReturn: [])
             .drive(mainView.targetTableView.rx.items(cellIdentifier: SearchTargetTableCell.identifier, cellType: SearchTargetTableCell.self)) { (row, element, cell) in
                 cell.configCell(row: element)
@@ -92,6 +95,7 @@ final class SearchVC: BaseViewController<SearchView,SearchViewModel> {
             .bind(with: self) { owner, value in
                 // 타겟 아이템 눌렀을 때 결과 화면으로 이동
                 guard let board = owner.board else { return }
+                owner.viewModel.saveSearchKeyword(entity: value)
                 owner.moveResultSearchVC(board: board, searchTargetEntity: value)
             }
             .disposed(by: viewModel.disposeBag)
@@ -118,6 +122,12 @@ extension SearchVC {
         rightBarButton.rx.tap
             .bind(with: self) { owner, _ in
                 owner.navigationController?.popViewController(animated: false)
+            }
+            .disposed(by: viewModel.disposeBag)
+        
+        viewModel.recentSearchHistoryData
+            .bind(with: self) { owner, recentSearchDatas in
+                print("저장된 목록 - ", recentSearchDatas)
             }
             .disposed(by: viewModel.disposeBag)
     }
