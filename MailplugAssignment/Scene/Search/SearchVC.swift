@@ -41,10 +41,46 @@ final class SearchVC: BaseViewController<SearchView,SearchViewModel> {
                     owner.showAlert(title: "", msg: Strings.Error.emptySearchText, ok: Strings.Common.ok)
                     owner.mainView.searchTextField.becomeFirstResponder()
                 } else {
-                    // TODO: target 선택 UI 개발
                     owner.viewModel.updateSearchData(target: .all, search: searchText, offset: 0)
                     owner.viewModel.searchPost()
                 }
+            }
+            .disposed(by: viewModel.disposeBag)
+        
+        // 입력값 체크
+        mainView.searchTextField
+            .rx
+            .text
+            .orEmpty            
+            .asDriver()
+            .distinctUntilChanged()
+            .debounce(.seconds(1))
+            .drive(with: self, onNext: { owner, text in
+                if !text.isEmpty {
+                    owner.mainView.targetTableView.isHidden = false
+                    owner.viewModel.updateSearchTargetDatas(search: text)
+                } else {
+                    // TODO: 최근 검색 기록 있으면 최근기록 보여주고 없으면 빈 리스트 보여주기
+                    owner.mainView.emptyRecentSearchView.isHidden = true
+                }
+            })
+            .disposed(by: viewModel.disposeBag)
+        
+    }
+    
+    private func bindTargetTableView() {
+        viewModel.searchTargets
+            .asDriver(onErrorJustReturn: [])
+            .drive(mainView.targetTableView.rx.items(cellIdentifier: SearchTargetTableCell.identifier, cellType: SearchTargetTableCell.self)) { (row, element, cell) in
+                cell.configCell(row: element)
+            }
+            .disposed(by: viewModel.disposeBag)
+        
+        Observable.zip(mainView.targetTableView.rx.itemSelected, mainView.targetTableView.rx.modelSelected(SearchTargetEntity.self))
+            .map { $0.1 }
+            .bind(with: self) { owner, value in
+                // TODO: 검색 API 통신하기
+                print(value)
             }
             .disposed(by: viewModel.disposeBag)
     }
@@ -63,6 +99,7 @@ extension SearchVC {
     
     func bindViewModel() {
         bindTextField()
+        bindTargetTableView()
         
         rightBarButton.rx.tap
             .bind(with: self) { owner, _ in

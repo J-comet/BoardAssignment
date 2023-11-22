@@ -29,6 +29,16 @@ final class SearchViewModel: BaseViewModel {
     let boardPosts = BehaviorRelay(value: [PostsEntityValue]())
     let isLoading = PublishRelay<Bool>()
     
+    let searchTargets = BehaviorRelay(value: [SearchTargetEntity]())
+    
+    func updateSearchTargetDatas(search: String) {
+        var targets: [SearchTargetEntity] = []
+        SearchRequest.SearchTarget.allCases.forEach { target in
+            targets.append(SearchTargetEntity(target: target, search: search))
+        }
+        searchTargets.accept(targets)
+    }
+    
     func updateSearchData(
         boardID: Int? = nil,
         target: SearchRequest.SearchTarget? = nil,

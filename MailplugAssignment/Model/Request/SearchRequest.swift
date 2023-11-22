@@ -13,10 +13,23 @@ struct SearchRequest: Encodable {
     let offset: String
     let limit: String
     
-    enum SearchTarget: String {
+    enum SearchTarget: String, CaseIterable {
         case all
         case title
         case contents
         case writer
+        
+        var category: String {
+            switch self {
+            case .all:
+                "전체"
+            case .title:
+                "제목"
+            case .contents:
+                "내용"
+            case .writer:
+                "작성자"
+            }
+        }
     }
 }

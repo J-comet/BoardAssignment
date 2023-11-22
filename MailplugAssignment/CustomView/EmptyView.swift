@@ -22,6 +22,8 @@ final class EmptyView: UIView {
     private let emptyLabel = SansNeoFontLabel().then {
         $0.textColor = .mpNeutralCoolGrey600
         $0.font(weight: .regular, size: 14)
+        $0.textAlignment = .center
+        $0.numberOfLines = 0
     }
     
     override init(frame: CGRect) {

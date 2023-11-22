@@ -59,6 +59,8 @@
 		C08A8CA82B0DC88000A87717 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08A8CA72B0DC88000A87717 /* SearchTextField.swift */; };
 		C08A8CAA2B0DD48100A87717 /* SearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08A8CA92B0DD48100A87717 /* SearchRequest.swift */; };
 		C08A8CAC2B0DD63900A87717 /* RemoteSearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08A8CAB2B0DD63900A87717 /* RemoteSearchRepository.swift */; };
+		C08A8CB02B0DE64600A87717 /* SearchTargetTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08A8CAF2B0DE64600A87717 /* SearchTargetTableCell.swift */; };
+		C08A8CB22B0DE68900A87717 /* SearchTargetEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08A8CB12B0DE68900A87717 /* SearchTargetEntity.swift */; };
 		C0DAE96A2B05F44F0067279A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DAE9692B05F44F0067279A /* AppDelegate.swift */; };
 		C0DAE96C2B05F44F0067279A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DAE96B2B05F44F0067279A /* SceneDelegate.swift */; };
 		C0DAE9732B05F4510067279A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0DAE9722B05F4510067279A /* Assets.xcassets */; };
@@ -123,6 +125,8 @@
 		C08A8CA72B0DC88000A87717 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		C08A8CA92B0DD48100A87717 /* SearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequest.swift; sourceTree = "<group>"; };
 		C08A8CAB2B0DD63900A87717 /* RemoteSearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteSearchRepository.swift; sourceTree = "<group>"; };
+		C08A8CAF2B0DE64600A87717 /* SearchTargetTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTargetTableCell.swift; sourceTree = "<group>"; };
+		C08A8CB12B0DE68900A87717 /* SearchTargetEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTargetEntity.swift; sourceTree = "<group>"; };
 		C0DAE9662B05F44F0067279A /* MailplugAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MailplugAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0DAE9692B05F44F0067279A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0DAE96B2B05F44F0067279A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -211,6 +215,7 @@
 			children = (
 				C0533B752B0A46EE0001B862 /* BoardsEntity.swift */,
 				C0E798972B0CD25300E0EC05 /* PostsEntity.swift */,
+				C08A8CB12B0DE68900A87717 /* SearchTargetEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -347,6 +352,7 @@
 				C08A8CA12B0DC33900A87717 /* SearchVC.swift */,
 				C08A8CA32B0DC34000A87717 /* SearchView.swift */,
 				C08A8CA52B0DC34700A87717 /* SearchViewModel.swift */,
+				C08A8CAF2B0DE64600A87717 /* SearchTargetTableCell.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -513,12 +519,14 @@
 				C0533B762B0A46EE0001B862 /* BoardsEntity.swift in Sources */,
 				C08A8CA22B0DC33900A87717 /* SearchVC.swift in Sources */,
 				C05D28372B067CD600F98E23 /* SpoqaHanSansNeoFonts.swift in Sources */,
+				C08A8CB22B0DE68900A87717 /* SearchTargetEntity.swift in Sources */,
 				C08A8CA82B0DC88000A87717 /* SearchTextField.swift in Sources */,
 				C0533B732B0A45D90001B862 /* CreatEntityProtocol.swift in Sources */,
 				C05D283F2B06801000F98E23 /* Strings.swift in Sources */,
 				C0E7989A2B0CD25E00E0EC05 /* PostsResponse.swift in Sources */,
 				C0533B9C2B0C32940001B862 /* SplashVC.swift in Sources */,
 				C0E7989C2B0CD8B300E0EC05 /* RemotePostRepository.swift in Sources */,
+				C08A8CB02B0DE64600A87717 /* SearchTargetTableCell.swift in Sources */,
 				C05D28482B06827700F98E23 /* MenuViewModel.swift in Sources */,
 				C05D28242B06761F00F98E23 /* EmptyView.swift in Sources */,
 				C05D28222B06695100F98E23 /* NavTitleLabel.swift in Sources */,

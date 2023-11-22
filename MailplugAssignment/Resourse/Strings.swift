@@ -28,6 +28,7 @@ enum Strings {
     
     enum Search {
         static let placeHolder = "search_placeholder".localized
+        static let emptyRecentSearch = "empty_recent_search".localized
     }
     
     enum Error {
