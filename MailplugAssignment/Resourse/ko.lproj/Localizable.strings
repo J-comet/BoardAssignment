@@ -22,6 +22,10 @@
 "empty_recent_search" = "게시글의 제목, 내용 또는 작성자에 포함된\n단어 또는 문장을 검색해 주세요.";
 "empty_result_search" = "검색 결과가 없습니다. 다른 검색어를 입력해 보세요.";
 
+"search_target_all" = "전체";
+"search_target_title" = "제목";
+"search_target_contents" = "내용";
+"search_target_writer" = "작성자";
 
 "error_force_exit" = "오류가 발생했어요\n앱 종료 후 재시도해주세요";
 "error_search_empty" = "검색어를 입력해주세요";

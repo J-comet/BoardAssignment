@@ -22,13 +22,13 @@ struct SearchRequest: Encodable {
         var category: String {
             switch self {
             case .all:
-                "전체"
+                Strings.Search.targetAll
             case .title:
-                "제목"
+                Strings.Search.targetTitle
             case .contents:
-                "내용"
+                Strings.Search.targetContents
             case .writer:
-                "작성자"
+                Strings.Search.targetWriter
             }
         }
     }
