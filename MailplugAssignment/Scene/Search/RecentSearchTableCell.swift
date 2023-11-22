@@ -1,5 +1,5 @@
 //
-//  SearchTargetTableCell.swift
+//  RecentSearchTableCell.swift
 //  MailplugAssignment
 //
 //  Created by 장혜성 on 2023/11/22.
@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class SearchTargetTableCell: BaseTableViewCell<SearchTargetEntity> {
+final class RecentSearchTableCell: BaseTableViewCell<SearchTargetEntity> {
     
     private let contentStackView = UIStackView().then {
         $0.axis = .horizontal
@@ -27,8 +27,14 @@ final class SearchTargetTableCell: BaseTableViewCell<SearchTargetEntity> {
         $0.textColor = .mpSecondaryBlackChocolate700
     }
     
-    private let arrowImage = UIImageView().then {
-        $0.image = .caretArrow
+    let closeImage = UIImageView().then {
+        $0.contentMode = .scaleAspectFit
+        let insetValue: CGFloat = 3
+        $0.image = .close.withAlignmentRectInsets(UIEdgeInsets(top: insetValue, left: insetValue, bottom: insetValue, right: insetValue))
+    }
+    
+    private let recentImage = UIImageView().then {
+        $0.image = .recent
     }
     
     private let lineView = UIView().then {
@@ -36,31 +42,39 @@ final class SearchTargetTableCell: BaseTableViewCell<SearchTargetEntity> {
     }
     
     override func configCell(row: SearchTargetEntity) {
-        contentLabel.text = row.target.category + " : "
+        let content = SearchRequest.SearchTarget(rawValue: row.targetType)?.category ?? ""
+        contentLabel.text = content + " : "
         searchLabel.text = row.search
     }
     
     override func configureHierarchy() {
         backgroundColor = .mpBackground
         selectionStyle = .none
+        contentView.addSubview(recentImage)
         contentView.addSubview(contentStackView)
-        contentView.addSubview(arrowImage)
+        contentView.addSubview(closeImage)
         contentView.addSubview(lineView)
         
         contentLabel.setContentHuggingPriority(.required, for: .horizontal)
-        arrowImage.setContentHuggingPriority(.required, for: .horizontal)
+        closeImage.setContentHuggingPriority(.required, for: .horizontal)
         contentStackView.addArrangedSubview(contentLabel)
         contentStackView.addArrangedSubview(searchLabel)
     }
     
     override func configureLayout() {
-        contentStackView.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
+        recentImage.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(14)
-            make.trailing.equalTo(arrowImage.snp.leading)
+            make.centerY.equalToSuperview()
+            make.size.equalTo(24)
         }
         
-        arrowImage.snp.makeConstraints { make in
+        contentStackView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.equalTo(recentImage.snp.trailing).offset(10)
+            make.trailing.equalTo(closeImage.snp.leading)
+        }
+        
+        closeImage.snp.makeConstraints { make in
             make.size.equalTo(18)
             make.trailing.equalToSuperview().inset(14)
             make.centerY.equalToSuperview()

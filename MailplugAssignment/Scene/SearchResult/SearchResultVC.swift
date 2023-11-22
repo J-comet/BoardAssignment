@@ -127,7 +127,7 @@ extension SearchResultVC {
         mainView.searchTextField.attributedText = attributedText
         
         mainView.searchTextField.placeholder = Strings.Search.placeHolder.localized(with: [boardEntity.displayName])
-        mainView.searchTextField.frame = .init(x: 0, y: 0, width: UIScreen.main.bounds.size.width * 0.8, height: 44)
+        mainView.searchTextField.frame = .init(x: 0, y: 0, width: UIScreen.main.bounds.size.width - 28, height: 44)
         navigationItem.titleView = mainView.searchTextField
     }
 }

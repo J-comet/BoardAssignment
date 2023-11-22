@@ -39,10 +39,20 @@ final class SearchView: BaseView {
         $0.isHidden = true
     }
     
+    let recentSearchTableView = UITableView().then {
+        $0.register(RecentSearchTableCell.self, forCellReuseIdentifier: RecentSearchTableCell.identifier)
+        $0.showsVerticalScrollIndicator = false
+        $0.alwaysBounceVertical = false
+        $0.separatorStyle = .none
+        $0.rowHeight = 48
+        $0.isHidden = true
+    }
+    
     override func configureHierarchy() {
         addSubview(containerView)
         containerView.addSubview(emptyRecentSearchView)        
         containerView.addSubview(targetTableView)
+        containerView.addSubview(recentSearchTableView)
     }
     
     override func configureLayout() {
@@ -60,6 +70,10 @@ final class SearchView: BaseView {
             make.horizontalEdges.equalToSuperview()
         }
  
+        recentSearchTableView.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview()
+            make.horizontalEdges.equalToSuperview()
+        }
     }
     
 }

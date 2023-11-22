@@ -27,6 +27,8 @@ final class SearchViewModel: BaseViewModel {
     // 로컬에 저장된 최신 검색 목록
     let recentSearchHistoryData = PublishRelay<[SearchTargetEntity]>()
     
+    var hasRecentSearchData = false
+    
     private var notificationToken: NotificationToken?
     
     deinit {
@@ -43,9 +45,14 @@ final class SearchViewModel: BaseViewModel {
     
     private func getLocalSearchHistory() -> [SearchTargetEntity] {
         guard let localData = localSearchRepository.fetch()?.sorted(byKeyPath: "date", ascending: false) else {
+            hasRecentSearchData = false
             return []
         }
-        return localData.toArray()
+        
+        let datas = localData.toArray()
+        print(datas)
+        hasRecentSearchData = !datas.isEmpty
+        return datas
     }
     
     func saveSearchKeyword(entity: SearchTargetEntity) {
